@@ -6,7 +6,7 @@ FROM ruby:3.2.2
 # ==============================================================================
 # Set environment variables
 # ------------------------------------------------------------------------------
-ENV RAILS_ROOT /var/www/wildflower_designs
+ENV RAILS_ROOT /share/Public/Web-Hosting/wildflower_designs
 
 # ==============================================================================
 # Create and set the working directory

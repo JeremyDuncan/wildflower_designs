@@ -1,5 +1,5 @@
 # ===================================================================
-# This Docker Compose file is configured for a production environment
+# This Docker Compose file is configured for a development environment
 # -------------------------------------------------------------------
 version: '3'
 services:
@@ -8,7 +8,7 @@ services:
     volumes:
       - wildflower_designs_pg_data:/var/lib/postgresql/data
     environment:
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_PASSWORD: c44cae69846fab92331f533e6fe1d8bd
 
   web:
     build: .
@@ -19,20 +19,20 @@ services:
         rm -f tmp/pids/server.pid && \
         bundle exec rails db:create db:migrate && \
         bundle exec rails assets:precompile && \
-        bundle exec rails s -p ${WEB_PORT_INTERNAL} -b '0.0.0.0'
+        bundle exec rails s -p 8538 -b '0.0.0.0'
     volumes:
-      - ${APP_VOLUME_PATH}:/var/www/wildflower_designs
+      - /share/Public/docker/wildflower_designs:/var/www/wildflower_designs
     ports:
-      - "${WEB_PORT_EXTERNAL}:${WEB_PORT_INTERNAL}"
+      - "8538:8538"
     depends_on:
       - db
     environment:
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      RAILS_ENV: ${RAILS_ENV}
-      RACK_ENV: ${RAILS_ENV}
-      RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
-      DATABASE_URL: "postgresql://postgres:${POSTGRES_PASSWORD}@db:5432/wildflower_designs_${RAILS_ENV}"
-      GAME_API_PORT: ${GAME_API_PORT}
+      POSTGRES_PASSWORD: c44cae69846fab92331f533e6fe1d8bd
+      RAILS_ENV: development
+      RACK_ENV: development
+      RAILS_MASTER_KEY: c44cae69846fab92331f533e6fe1d8bd
+      DATABASE_URL: "postgresql://postgres:c44cae69846fab92331f533e6fe1d8bd@db:5432/wildflower_designs_development"
+      GAME_API_PORT: "https://jeremyd.net"
 
 volumes:
   wildflower_designs_pg_data:
