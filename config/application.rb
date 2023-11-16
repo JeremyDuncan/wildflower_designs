@@ -8,6 +8,9 @@ Bundler.require(*Rails.groups)
 
 module WildflowerDesigns
   class Application < Rails::Application
+    Rails.application.config.hosts << "wild-flower-designs.com"
+    Rails.application.config.hosts << "www.wild-flower-designs.com"
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
