@@ -1,0 +1,16 @@
+@import "mixins";
+
+#footer {
+  background-color: $blue-primary;
+  opacity:          .95;
+  filter:           (opacity=50);
+  display:          flex;
+  justify-content:  center;
+  align-items:      center;
+  text-align:       center;
+  position:         fixed;
+  bottom:           0;
+  width:            100%;
+  color:            $blue-accent;
+  @include          elevation-6;
+}

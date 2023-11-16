@@ -1,0 +1,82 @@
+// Color Palette ===============================================================
+$red-primary:     #975548;
+$red-secondary:   #C07667;
+$red-accent:      #E5AB9E;
+
+$green-primary:   #4D736A;
+$green-secondary: #79A69D;
+$green-accent:    #B0D7D0;
+
+$blue-primary:    #456870;
+$blue-secondary:  #6A939B;
+$blue-accent:     #A6BBC0;
+
+$grey-primary:    #8D836E;
+$grey-secondary:  #C3B3B0;
+$grey-accent:     #E1D7C2;
+
+$light-gray:      #ecf0f1;
+$dark-gray:       #34495e;
+$dark-gray:       #34495e;
+$white:           #ffffff;
+$black:           #000000;
+
+$blue-font: #1e364d;
+
+// Typography
+$primary-font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+//
+//|
+//        body {
+//  text-align: center;
+//  font-family: Arial, sans-serif;
+//}
+//.content {
+//  margin-top: 50px;
+//}
+
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin button-style($bg-color: $primary-color) {
+  background-color: $bg-color;
+  border: none;
+  padding: 10px 15px;
+  color: $white;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+}
+
+
+// ELEVATION ===================================================================
+@mixin elevation-1 {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 1px -1px rgba(0, 0, 0, 0.12);
+}
+
+@mixin elevation-2 {
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+@mixin elevation-3 {
+  box-shadow: 0 3px 4px -2px rgba(0, 0, 0, 0.2), 0 3px 3px -2px rgba(0, 0, 0, 0.14), 0 1px 8px 0 rgba(0, 0, 0, 0.12);
+}
+
+@mixin elevation-4 {
+  box-shadow: 0 4px 5px -2px rgba(0, 0, 0, 0.2), 0 7px 10px 1px rgba(0, 0, 0, 0.14), 0 2px 16px 1px rgba(0, 0, 0, 0.12);
+}
+
+@mixin elevation-5 {
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+@mixin elevation-6 {
+  box-shadow: 0 6px 6px -3px rgba(0, 0, 0, 0.2), 0 9px 12px 1px rgba(0, 0, 0, 0.14), 0 3px 16px 2px rgba(0, 0, 0, 0.12);
+}
+@mixin elevation-24 {
+  box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);
+}

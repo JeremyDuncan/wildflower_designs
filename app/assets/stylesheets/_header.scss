@@ -1,0 +1,31 @@
+@import 'mixins';
+
+header {
+  background-color:  $blue-primary;
+  padding:          .5em;
+  padding-bottom:    0px;
+  text-align:        center;
+  font-size:         1.2em;
+  position:          sticky;
+  top:               0;
+  z-index:           1000;
+  display:           flex;
+  justify-content:   center;
+  align-items:       center;
+  width:             100%;
+  color:             $blue-accent;
+  @include           elevation-6;
+}
+header_two {
+  background-color: #1a1a1a;
+  padding:          0px;
+  border-radius:    0px 0px 10px 10px;
+  position:         sticky;
+  top:              60px;
+  z-index:          9999;
+}
+header_two>h2 {
+  font-size:  1.2rem;
+  padding:    0px;
+  margin-top: 0px;
+}
