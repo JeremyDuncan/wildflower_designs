@@ -72,6 +72,9 @@ nav {
       left: 50%;
       transform: translateX(-50%);
     }
+    &.flex {
+      display: flex;
+    }
 
     @media #{$medium-and-down} {
       left: 50%;
