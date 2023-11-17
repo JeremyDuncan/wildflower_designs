@@ -1,13 +1,15 @@
-.center
-  h1 Work in Progress
-  p We're currently working hard to create something fantastic.
-  p Stay tuned for updates on Wildflower Designs!
-  / .image-container
-  = image_tag 'flowers_shirt_1.jpg', alt: 'Beautiful Wildflowers', class: "image-placeholder", style: "width: 40vw;"
-  .flex-container style="display: flex; gap: .9vw; justify-content: space-between"
-    = image_tag 'flowers_1.jpeg', alt: 'Beautiful Wildflowers', class: "image-placeholder", style: "margin: 0"
-    = image_tag 'flowers_3.jpg', alt: 'Beautiful Wildflowers', class: "image-placeholder", style: "margin: 0"
+.container.center-align
+  .row
+    .col.s12
+      h1 Work in Progress
+  .row
+    .col.s6.offset-s3
+      .card-panel.wf-blue.bg-3.text-1.hoverable
+        | We're currently working hard to create something fantastic.
+        br
+        | Stay tuned for updates on Wildflower Designs!
 
-style
-  |
-    .center {text-align: center }
+= image_tag 'flowers_shirt_1.jpg', alt: 'Beautiful Wildflowers', class: "image-placeholder hoverable", style: "width: 40vw;"
+.flex-container style="display: flex; gap: .9vw; justify-content: space-between"
+  = image_tag 'flowers_1.jpeg', alt: 'Beautiful Wildflowers', class: "image-placeholder hoverable", style: "margin: 0"
+  = image_tag 'flowers_3.jpg', alt: 'Beautiful Wildflowers', class: "image-placeholder hoverable", style: "margin: 0"

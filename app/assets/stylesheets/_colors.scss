@@ -1,0 +1,111 @@
+@import 'mixins';
+
+
+//$red-primary:     #975548;
+//$red-secondary:   #C07667;
+//$red-accent:      #E5AB9E;
+//
+//$green-primary:   #4D736A;
+//$green-secondary: #79A69D;
+//$green-accent:    #B0D7D0;
+//
+//$blue-primary:    #456870;
+//$blue-secondary:  #6A939B;
+//$blue-accent:     #A6BBC0;
+//
+//$grey-primary:    #8D836E;
+//$grey-secondary:  #C3B3B0;
+//$grey-accent:     #E1D7C2;
+//
+//$light-gray:      #ecf0f1;
+//$dark-gray:       #34495e;
+//$dark-gray:       #34495e;
+//$white:           #ffffff;
+//$black:           #000000;
+
+
+
+.wf-grey {
+  &.bg-1 {
+    background-color: $grey-primary;
+  }
+  &.text-1 {
+    color: $grey-primary;
+  }
+  &.bg-2 {
+    background-color: $grey-secondary;
+  }
+  &.text-2 {
+    color: $grey-secondary;
+  }
+  &.bg-3 {
+    background-color: $grey-accent;
+  }
+  &.text-3 {
+    color: $grey-accent;
+  }
+}
+
+.wf-blue {
+  &.bg-1 {
+    background-color: $blue-primary;
+  }
+  &.text-1 {
+    color: $blue-primary;
+  }
+  &.bg-2 {
+    background-color: $blue-secondary;
+  }
+  &.text-2 {
+    color: $blue-secondary;
+  }
+  &.bg-3 {
+    background-color: $blue-accent;
+  }
+  &.text-3 {
+    color: $blue-accent;
+  }
+}
+
+.wf-red {
+  &.bg-1 {
+    background-color: $red-primary;
+  }
+  &.text-1 {
+    color: $red-primary;
+  }
+  &.bg-2 {
+    background-color: $red-secondary;
+  }
+  &.text-2 {
+    color: $red-secondary;
+  }
+  &.bg-3 {
+    background-color: $red-accent;
+  }
+  &.text-3 {
+    color: $red-accent;
+  }
+}
+
+.wf-green {
+  &.bg-1 {
+    background-color: $green-primary;
+  }
+  &.text-1 {
+    color: $green-primary;
+  }
+  &.bg-2 {
+    background-color: $green-secondary;
+  }
+  &.text-2 {
+    color: $green-secondary;
+  }
+  &.bg-3 {
+    background-color: $green-accent;
+  }
+  &.text-3 {
+    color: $green-accent;
+  }
+}
+
