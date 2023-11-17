@@ -3,16 +3,37 @@
 / --------------------------------------------------------------------------------
 nav
   .nav-wrapper.wf-blue.bg-1
-    .div style="display: flex; flex-wrap: nowrap"
-      a.brand-logo.flex.no-wrap[href="#"]
-        | &nbsp Wildflower Designs&nbsp;
-        i.material-icons
-          | local_florist
+    a.brand-logo.flex.no-wrap[href="#"]
+      | &nbsp Wildflower Designs&nbsp;
+      i.material-icons
+        | local_florist
 
-    ul#nav-mobile.right.hide-on-med-and-down
+    a.sidenav-trigger[href="#" data-target="mobile-demo"]
+      i.material-icons
+        | menu
+
+    ul.right.hide-on-med-and-down
       li
         a[href="#"] Products
+      li
+        a[href="#"] Requests
       li
         a[href="#"] About Me
       li
         a[href="#"] Contact
+
+
+ul.sidenav[id="mobile-demo"]
+  li
+    a[href="#"] Products
+  li
+    a[href="#"] Requests
+  li
+    a[href="#"] About Me
+  li
+    a[href="#"] Contact
+
+javascript:
+    $(document).ready(function(){
+        $('.sidenav').sidenav();
+    });
