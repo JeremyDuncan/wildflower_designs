@@ -1,0 +1,9 @@
+@import 'variables';
+@import 'global';
+
+
+/* This is needed for some mobile phones to display the Google Icon font properly */
+.material-icons {
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'liga';
+}
