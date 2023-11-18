@@ -1,0 +1,19 @@
+h1 Contact Me
+
+= form_for @contact do |f|
+  = f.label :first_name
+  = f.text_field :first_name
+
+  = f.label :last_name
+  = f.text_field :last_name
+
+  = f.label :phone
+  = f.text_field :phone
+
+  = f.label :email
+  = f.email_field :email
+
+  = f.label :message
+  = f.text_area :message
+
+  = f.submit "Send Message"
