@@ -1,19 +1,34 @@
-h1 Contact Me
+h1.center-align Contact Me
 
-= form_for @contact do |f|
-  = f.label :first_name
-  = f.text_field :first_name
+= form_for @contact, html: { class: 'col s12', style: "padding: 0px; margin: 0px; width: 80vw" } do |f|
+  .row style="padding: 0px; margin: 0px;"
+    .input-field.col.s6
+      i.material-icons.prefix person_outline
+      = f.label :first_name, class: "white-text"
+      = f.text_field :first_name
 
-  = f.label :last_name
-  = f.text_field :last_name
+    .input-field.col.s6
+      i.material-icons.prefix person_outline
+      = f.label :last_name, class: "white-text"
+      = f.text_field :last_name
 
-  = f.label :phone
-  = f.text_field :phone
+  .row
+    .input-field.col.s6
+      i.material-icons.prefix phone
+      = f.label :phone, class: "white-text"
+      = f.text_field :phone
 
-  = f.label :email
-  = f.email_field :email
+    .input-field.col.s6
+      i.material-icons.prefix email
+      = f.label :email, class: "white-text"
+      = f.email_field :email
 
-  = f.label :message
-  = f.text_area :message
+  .row
+    .input-field.col.s12
+      i.material-icons.prefix mode_edit
+      = f.label :message, class: "white-text"
+      = f.text_area :message, class: 'materialize-textarea'
 
-  = f.submit "Send Message"
+  .row
+    .col.s12
+      = f.submit "Send Message", class: 'btn waves-effect waves-light white-text'
