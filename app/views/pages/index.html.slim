@@ -1,0 +1,10 @@
+h1
+  | Pages
+#pages
+  .flex-container
+    - @pages.each do |page|
+      .card-panel.wf-blue.bg-3.text-1.hoverable.flex-item.half
+        = render page
+        br
+        = link_to "Show this page", page, class: "card-link"
+= link_to "New page", new_page_path

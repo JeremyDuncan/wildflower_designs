@@ -1,0 +1,73 @@
+.flex-container {
+  display:         flex;
+  flex-wrap:       wrap;
+  justify-content: space-between;
+
+  // You can define variables for common values
+  $padding: 10px;
+
+  > .flex-item {
+    padding: $padding;
+  }
+}
+
+.flex-item {
+  flex:   1 1 auto;
+  margin: 5px;
+
+  &.half {
+    flex-basis: calc(50% - 10px); // Assuming 5px margin
+  }
+
+  &.third {
+    flex-basis: calc(33.333% - 10px);
+  }
+
+  &.quarter {
+    flex-basis: calc(25% - 10px);
+  }
+}
+
+// Media queries for responsiveness
+@media screen and (max-width: 768px) {
+  .flex-item {
+    &.half, &.third, &.quarter {
+      flex-basis: 100%;
+    }
+  }
+}
+
+.center-flex {
+  display:         flex;
+  justify-content: center;
+  align-items:     center;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+// For reverse direction
+.flex-row-reverse {
+  flex-direction: row-reverse;
+}
+
+.flex-column-reverse {
+  flex-direction: column-reverse;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.space-around {
+  justify-content: space-around;
+}
+
+.space-evenly {
+  justify-content: space-evenly;
+}

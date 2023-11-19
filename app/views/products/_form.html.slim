@@ -1,0 +1,109 @@
+= form_with(model: product, html: { class: "col s12", style: "width: 80vw" }, multipart: true) do |form|
+  - if product.errors.any?
+    div style="color: red; text-shadow: 1px 1px 1px black;"
+      h4
+        = pluralize(product.errors.count, "error") + " prohibited this product from being saved:"
+      ul
+        - product.errors.each do |error|
+          li = error.full_message
+      br
+        h3 Reload and try again.
+  - else
+    .row
+      .input-field.col.s12.m6.primary-field-bg-color
+        i.material-icons.prefix shopping_bag
+        = form.text_field :name, id: "name"
+        = form.label :product_name, class: "white-text", style: "padding-left: 10px;"
+
+      .input-field.col.s12.m6.primary-field-bg-color
+        i.material-icons.prefix attach_money
+        = form.number_field :price, id: "price", step: '0.01'
+        = form.label :price, class: "white-text", style: "padding-left: 10px;"
+
+    .row
+      .input-field.col.s12.primary-field-bg-color
+        i.material-icons.prefix description
+        = form.text_area :details, id: "details", class: "materialize-textarea", style: "height: 30vh"
+        = form.label :product_details, class: "white-text", style: "padding-left: 10px;"
+
+
+    h4 Product Images
+    .divider.wf-blue-primary
+    .image-fields
+      - product.images.each_with_index do |image, index|
+        .row
+          .col.s6 style="display: flex; flex-direction: column; width: 15vw;"
+            = image_tag(image.image.thumb_medium.url) if image.image.present?
+            - if image.image.present?
+              label
+                = form.check_box "images_attributes[#{index}][_destroy]"
+                span Remove Image
+
+
+          .file-field.input-field.col.s12
+            .btn.waves-effect.waves-light
+              - if image.image.present?
+                span Change Image
+              - else
+                span Add Image
+              = form.file_field :images, name: "product[images_attributes][#{index}][image]", id: "product_images_#{index}"
+
+            .file-path-wrapper
+              - if image.image.file
+                input.file-path.validate type="text" value=image.image.file.filename placeholder="Upload Product Image" readonly="true"
+              - else
+                input.file-path.validate type="text" placeholder="Upload Product Image" readonly="true"
+              = form.hidden_field :id, name: "product[images_attributes][#{index}][id]", value: image.id
+
+          .input-field.col.s12.primary-field-bg-color
+            i.material-icons.prefix text_snippet
+            = form.text_area :caption, value: image.caption,
+                    name:  "product[images_attributes][#{index}][caption]",
+                    id:    "caption_#{index}",
+                    class: 'validate',
+                    style: "height: 12vh"
+            = form.label :caption, 'Image Caption', class: "white-text", style: "padding-left: 10px;"
+
+
+    .new-image-fields
+    .row.flex-container.center-flex
+      = button_tag 'Add More Images', type: 'button', id: 'add_more_images', class: 'btn waves-effect waves-light'
+    br
+    .row
+      .flex-container.center-flex
+        = link_to "Cancel", products_path, class: 'btn waves-effect waves-light white-text'
+        | &nbsp
+        = button_tag type: 'submit', class: 'btn waves-effect waves-light white-text' do
+          | Submit
+
+javascript:
+    $(document).ready(function () {
+        let imageFieldIndex = 1;
+
+        $('#add_more_images').click(function (e) {
+            e.preventDefault();
+            let newField = `
+              <div class="row">
+                <div class="file-field input-field col s12">
+                  <div class="btn waves-effect waves-light">
+                    <span>Add Image</span>
+                    <input type="file" name="product[images_attributes][${imageFieldIndex}][image]">
+                  </div>
+                  <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" placeholder="Upload Product Image" readonly>
+                  </div>
+                </div>
+
+
+                <div class="input-field col s12 primary-field-bg-color">
+                  <i class="material-icons prefix">text_snippet</i>
+                  <textarea name="product[images_attributes][${imageFieldIndex}][caption]" id="caption_${imageFieldIndex}" class="materialize-textarea validate" style="height: 12vh;"></textarea>
+                  <label for="caption_${imageFieldIndex}" class="white-text" style="padding-left: 10px;">Caption</label>
+                </div>
+
+              </div>`;
+            $('.image-fields').append(newField);
+            imageFieldIndex++;
+        });
+    });
+

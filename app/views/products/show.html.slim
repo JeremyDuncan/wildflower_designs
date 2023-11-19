@@ -1,0 +1,18 @@
+- product = @product
+.flex-column.center-flex
+  h2 #{product.name} $#{product.price}
+  | #{product.details }
+
+  - product.images.each do |image|
+      - if image.image?
+        .rounded
+          = image_tag(image.image.thumb_medium.url)
+        | #{image.caption}
+
+  div
+    = link_to "Edit this product", edit_product_path(@product), class: 'btn waves-effect waves-light white-text'
+    | &nbsp
+    = link_to "Back to products", products_path, class: 'btn waves-effect waves-light white-text'
+    br
+    br
+    = button_to "Remove this product", @product, method: :delete, class: 'btn waves-effect waves-light white-text'

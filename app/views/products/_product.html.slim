@@ -1,0 +1,19 @@
+.flex-container.left-align  style="width: 100%"
+  #product
+    p
+      strong> Name:
+      = product.name
+    p
+      strong Price: $
+      = product.price
+    p
+      strong> Details:
+      = product.details
+.flex-container.center-flex
+  - if product.images.any? && product.images.first.image?
+    .rounded
+      = image_tag(product.images.first.image.thumb_medium.url)
+
+style
+  |
+    .rounded > img {border-radius: 8px;}

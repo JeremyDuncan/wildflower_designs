@@ -1,0 +1,33 @@
+doctype html
+html
+  head
+    style
+      | body { font-family: Arial, sans-serif; }
+      | .container { width: 100%; max-width: 600px; margin: 0 auto; padding: 20px; }
+      | .header { background-color: #009688; color: white; padding: 10px; text-align: center; }
+      | .content { background-color: #f2f2f2; padding: 20px; }
+      | .footer { background-color: #eee; color: #333; text-align: center; padding: 10px; }
+  body
+    div.container
+      div.header
+        h1 Contact Form Submission
+
+      div.content
+        p
+          | #{@greeting}
+
+        h2 Contact Information
+        p
+          | Name: #{@contact.first_name} #{@contact.last_name}
+        p
+          | Phone: #{@contact.phone}
+        p
+          | Email: #{@contact.email}
+        p
+          | Message:
+          br
+          | #{@contact.message}
+
+      div.footer
+        p
+          | © #{Time.now.year} Wildflower Designs

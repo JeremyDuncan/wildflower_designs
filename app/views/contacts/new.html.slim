@@ -1,0 +1,36 @@
+h1.center-align Contact Me
+.divider.wf-blue-primary
+br
+= form_for @contact, html: { class: 'col s12', style: "padding: 0px; margin: 0px; width: 80vw" } do |f|
+  .row style="padding: 0px; margin: 0px;"
+    .input-field.col.s12.m6.primary-field-bg-color
+      i.material-icons.prefix person_outline
+      = f.label :first_name, class: "white-text", style: "padding-left: 10px;"
+      = f.text_field :first_name
+
+    .input-field.col.s12.m6.primary-field-bg-color
+      i.material-icons.prefix person_outline
+      = f.label :last_name, class: "white-text", style: "padding-left: 10px;"
+      = f.text_field :last_name
+
+
+  .row style="padding: 0px; margin: 0px;"
+    .input-field.col.s12.m6.primary-field-bg-color
+      i.material-icons.prefix phone
+      = f.label :phone, class: "white-text", style: "padding-left: 10px;"
+      = f.text_field :phone
+
+    .input-field.col.s12.m6.primary-field-bg-color
+      i.material-icons.prefix email
+      = f.label :email, class: "white-text", style: "padding-left: 10px;"
+      = f.email_field :email
+
+  .row style="padding: 0px; margin: 0px;"
+    .input-field.col.s12.primary-field-bg-color
+      i.material-icons.prefix mode_edit
+      = f.label :message, class: "white-text", style: "padding-left: 10px;"
+      = f.text_area :message, class: 'materialize-textarea', style: "height: 30vh;"
+
+  .row
+    .col.s12
+      = f.submit "Send Message", class: 'btn waves-effect waves-light white-text'
