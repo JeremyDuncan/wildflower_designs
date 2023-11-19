@@ -26,19 +26,29 @@
 
   h4 Images
   .image-fields
-    .row
-      .file-field.input-field.col.s12
-        .btn.waves-effect.waves-light
-          span Add Image
-          = file_field_tag 'product[images_attributes][0][image]', id: 'product_images_0'
-        .file-path-wrapper
-          = text_field_tag nil, nil, class: 'file-path validate ', placeholder: 'Upload Product Image', readonly: true
+    - product.images.each_with_index do |image, index|
+      .row
+        .col.s6
+          = image_tag(image.image.thumb_medium.url) if image.image.present?
 
-      .input-field.col.s12
-        i.material-icons.prefix text_snippet
-        = text_field_tag 'product[images_attributes][0][caption]', nil, id: 'caption_0', class: 'validate'
-        = label_tag 'product[images_attributes][0][caption]', 'Image Caption', class: "white-text"
+        .file-field.input-field.col.s6
+          .btn.waves-effect.waves-light
+            span Change Image
+            = form.file_field :images, name: "product[images_attributes][#{index}][image]", id: "product_images_#{index}"
+            = form.hidden_field :id, name: "product[images_attributes][#{index}][id]", value: image.id
 
+        .input-field.col.s6
+          i.material-icons.prefix text_snippet
+          = form.text_field :caption, value: image.caption, name: "product[images_attributes][#{index}][caption]", id: "caption_#{index}", class: 'validate'
+          = form.label :caption, 'Image Caption', class: "white-text"
+
+        label
+          = form.check_box "images_attributes[#{index}][_destroy]"
+          span Remove Image
+
+
+
+  .new-image-fields
   .row.flex-container.center-flex
     = button_tag 'Add More Images', type: 'button', id: 'add_more_images', class: 'btn waves-effect waves-light'
 
