@@ -16,15 +16,8 @@
 
 @import 'mixins';
 @import "materialize";
+@import "products";
 
+@import "flex-styles";
 
-body {
-  background-color: $blue-secondary;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-family: $primary-font;
-  color: $blue-font;
-  margin:0px;
-}
+@import "general-styles";
