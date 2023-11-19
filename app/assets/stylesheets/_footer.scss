@@ -1,6 +1,7 @@
 @import "mixins";
 
 #footer {
+  z-index: 100;
   background-color: $blue-primary;
   opacity:          .95;
   filter:           (opacity=50);

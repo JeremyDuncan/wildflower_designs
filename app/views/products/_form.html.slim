@@ -1,4 +1,4 @@
-= form_with(model: product, html: { class: "col s12" }, multipart: true) do |form|
+= form_with(model: product, html: { class: "col s12", style: "width: 80vw" }, multipart: true) do |form|
   - if product.errors.any?
     div style="color: red"
       h2
@@ -28,35 +28,43 @@
   .image-fields
     - product.images.each_with_index do |image, index|
       .row
-        .col.s6
+        .col.s6 style="display: flex; flex-direction: column; width: 15vw;"
           = image_tag(image.image.thumb_medium.url) if image.image.present?
+          - if image.image.present?
+            label
+              = form.check_box "images_attributes[#{index}][_destroy]"
+              span Remove Image
 
-        .file-field.input-field.col.s6
+
+        .file-field.input-field.col.s12
           .btn.waves-effect.waves-light
-            span Change Image
+            - if image.image.present?
+              span Change Image
+            - else
+              span Add Image
             = form.file_field :images, name: "product[images_attributes][#{index}][image]", id: "product_images_#{index}"
+
+          .file-path-wrapper
+            - if image.image.file
+              input.file-path.validate type="text" value=image.image.file.filename placeholder="Upload Product Image" readonly="true"
+            - else
+              input.file-path.validate type="text" placeholder="Upload Product Image" readonly="true"
             = form.hidden_field :id, name: "product[images_attributes][#{index}][id]", value: image.id
 
-        .input-field.col.s6
+        .input-field.col.s12
           i.material-icons.prefix text_snippet
           = form.text_field :caption, value: image.caption, name: "product[images_attributes][#{index}][caption]", id: "caption_#{index}", class: 'validate'
           = form.label :caption, 'Image Caption', class: "white-text"
-
-        label
-          = form.check_box "images_attributes[#{index}][_destroy]"
-          span Remove Image
-
-
-
   .new-image-fields
   .row.flex-container.center-flex
     = button_tag 'Add More Images', type: 'button', id: 'add_more_images', class: 'btn waves-effect waves-light'
-
+  br
   .row
     .flex-container.center-flex
+      = link_to "Cancel", products_path, class: 'btn waves-effect waves-light white-text'
+      | &nbsp
       = button_tag type: 'submit', class: 'btn waves-effect waves-light white-text' do
         | Submit
-
 
 javascript:
     $(document).ready(function () {
