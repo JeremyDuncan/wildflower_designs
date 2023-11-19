@@ -21,8 +21,3 @@ production:
   <<: *default
   database: wildflower_designs_production
   password: <%= ENV['DB_PASSWORD']  || Rails.application.credentials.dig(:database, :password) %>
-
-
-database:
-  username: jeremy
-  password: "#6337Yahoo!!!!!"
