@@ -52,6 +52,62 @@ $primary-font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   cursor: pointer;
 }
 
+// ==============================
+// Custom Mixin for color changes
+// ------------------------------
+@mixin color-change($color) {
+  color:      $color;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: lighten($color, 20%);
+  }
+
+  &:active {
+    color: darken($color, 20%);
+  }
+}
+
+@mixin color-change-dark($color) {
+  color:      $color;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: darken($color, 20%);
+  }
+
+  &:active {
+    color: darken($color, 20%);
+  }
+}
+
+
+@mixin bg-color-change($color) {
+  background-color:      $color;
+  transition: color 0.3s ease;
+
+  &:hover {
+    background-color: lighten($color, 20%);
+  }
+
+  &:active {
+    background-color: darken($color, 20%);
+  }
+}
+
+@mixin bg-color-change-dark($color) {
+  background-color: $color;
+  transition:       background-color 0.6s ease;
+
+  &:hover {
+    background-color: darken($color, 10%);
+  }
+
+  &:active {
+    background-color: lighten($color, 10%);
+  }
+}
+
 
 // ELEVATION ===================================================================
 @mixin elevation-1 {
