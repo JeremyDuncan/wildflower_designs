@@ -1,0 +1,39 @@
+@import 'mixins';
+
+.no-wrap {
+  white-space: nowrap;
+}
+body {
+  background-color: $blue-secondary;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: $primary-font;
+  color: $blue-font;
+  margin:0px;
+}
+label{
+  color: $white;
+}
+
+a{
+  @include color-change($blue-accent)
+}
+
+#page > .card-link > a {
+  @include color-change($blue-primary)
+
+}
+
+.card-panel .card-link {
+  @include color-change-dark($blue-secondary)
+}
+
+.react-dark {
+  @include bg-color-change-dark($blue-accent)
+}
+.rounded > img {border-radius: 8px;}
+//.card-link {
+//  @include color-change-dark($blue-secondary)
+//}
