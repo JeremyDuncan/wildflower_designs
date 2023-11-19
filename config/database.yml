@@ -5,8 +5,8 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= ENV['DB_USERNAME']  || Rails.application.credentials.dig(:database, :username) %>
-  password: <%= ENV['DB_PASSWORD']  || Rails.application.credentials.dig(:database, :password) %>
+  username: <%= Rails.application.credentials.dig(:database, :username) %>
+  password: <%= Rails.application.credentials.dig(:database, :password) %>
   host: localhost
 
 development:
@@ -21,3 +21,8 @@ production:
   <<: *default
   database: wildflower_designs_production
   password: <%= ENV['DB_PASSWORD']  || Rails.application.credentials.dig(:database, :password) %>
+
+
+database:
+  username: jeremy
+  password: "#6337Yahoo!!!!!"
