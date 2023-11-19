@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   # get 'contacts/create'
   resources :contacts, only: [:new, :create]
 
+  resources :products do
+    resources :images, only: [:new, :create]
+  end
+
   get 'static_pages/about_me'
   get 'static_pages/contact'
 
