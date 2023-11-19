@@ -4,7 +4,7 @@ class UserMailer < ApplicationMailer
   def contact_email(contact)
     @contact = contact
     @greeting = " 👋🏻 Hello Crystal, You have a new message from an interested customer."
-    mail(to: 'jeremy.duncan1984@gmail.com', subject: 'Wildflower Designs Customer Message')
+    mail(to: 'wildflowerdesigns0923@gmail.com', cc:'jeremy.duncan1984@gmail.com',subject: 'Wildflower Designs Customer Message')
   end
 
   # def contact_email(contact)

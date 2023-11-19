@@ -8,26 +8,27 @@
           li = error.full_message
       br
         h3 Reload and try again.
-        
   - else
     .row
-      .input-field.col.s6
+      .input-field.col.s12.m6.primary-field-bg-color
         i.material-icons.prefix shopping_bag
-        = form.text_field :name, id: "name", class: "validate"
-        = form.label :product_name, class: "white-text"
+        = form.text_field :name, id: "name"
+        = form.label :product_name, class: "white-text", style: "padding-left: 10px;"
 
-      .input-field.col.s6
+      .input-field.col.s12.m6.primary-field-bg-color
         i.material-icons.prefix attach_money
-        = form.number_field :price, id: "price", class: "validate", step: "0.01"
-        = form.label :price, class: "white-text"
+        = form.number_field :price, id: "price", step: '0.01'
+        = form.label :price, class: "white-text", style: "padding-left: 10px;"
 
     .row
-      .input-field.col.s12
+      .input-field.col.s12.primary-field-bg-color
         i.material-icons.prefix description
-        = form.text_area :details, id: "details", class: "materialize-textarea"
-        = form.label :product_details, class: "white-text"
+        = form.text_area :details, id: "details", class: "materialize-textarea", style: "height: 30vh"
+        = form.label :product_details, class: "white-text", style: "padding-left: 10px;"
 
-    h4 Images
+
+    h4 Product Images
+    .divider.wf-blue-primary
     .image-fields
       - product.images.each_with_index do |image, index|
         .row
@@ -54,10 +55,16 @@
                 input.file-path.validate type="text" placeholder="Upload Product Image" readonly="true"
               = form.hidden_field :id, name: "product[images_attributes][#{index}][id]", value: image.id
 
-          .input-field.col.s12
+          .input-field.col.s12.primary-field-bg-color
             i.material-icons.prefix text_snippet
-            = form.text_field :caption, value: image.caption, name: "product[images_attributes][#{index}][caption]", id: "caption_#{index}", class: 'validate'
-            = form.label :caption, 'Image Caption', class: "white-text"
+            = form.text_area :caption, value: image.caption,
+                    name:  "product[images_attributes][#{index}][caption]",
+                    id:    "caption_#{index}",
+                    class: 'validate',
+                    style: "height: 12vh"
+            = form.label :caption, 'Image Caption', class: "white-text", style: "padding-left: 10px;"
+
+
     .new-image-fields
     .row.flex-container.center-flex
       = button_tag 'Add More Images', type: 'button', id: 'add_more_images', class: 'btn waves-effect waves-light'
@@ -87,11 +94,13 @@ javascript:
                   </div>
                 </div>
 
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">text_snippet</i>
-                    <input type="text" name="product[images_attributes][${imageFieldIndex}][caption]" id="caption_${imageFieldIndex}" class="validate">
-                    <label for="caption_${imageFieldIndex}">Caption</label>
+
+                <div class="input-field col s12 primary-field-bg-color">
+                  <i class="material-icons prefix">text_snippet</i>
+                  <textarea name="product[images_attributes][${imageFieldIndex}][caption]" id="caption_${imageFieldIndex}" class="materialize-textarea validate" style="height: 12vh;"></textarea>
+                  <label for="caption_${imageFieldIndex}" class="white-text" style="padding-left: 10px;">Caption</label>
                 </div>
+
               </div>`;
             $('.image-fields').append(newField);
             imageFieldIndex++;

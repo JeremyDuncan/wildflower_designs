@@ -21,6 +21,56 @@
   }
 }
 
+.primary-field-bg-color  input  {
+  background-color: $grey-accent;
+}
+
+//.input-field.col.s12.m6.primary-field-bg-color input[type="text"],
+//.input-field.col.s12.m6.primary-field-bg-color input[type="email"],
+//.input-field.col.s12.primary-field-bg-color textarea {
+//  background-color: $blue-accent;
+//  border-radius:    8px;
+//  padding-left:     4px;
+//  color:            $blue-primary;
+//  font-weight:      bold;
+//  font-size: 1.5rem;
+//}
+
+//.input-field.col.s12.m6.primary-field-bg-color input[type="text"],
+//.input-field.col.s12.m6.primary-field-bg-color input[type="number"],
+//.input-field.col.s12.primary-field-bg-color textarea {
+//  background-color: $blue-accent;
+//  border-radius:    8px;
+//  padding-left:     4px;
+//  color:            $blue-primary;
+//  font-weight:      bold;
+//  font-size:        1.5rem;
+//}
+
+.input-field.col.s12.m6.primary-field-bg-color input[type="text"],
+.input-field.col.s12.m6.primary-field-bg-color input[type="number"],
+.input-field.col.s12.m6.primary-field-bg-color input[type="email"],
+.input-field.col.s12.primary-field-bg-color textarea,
+.input-field.col.s12.primary-field-bg-color input[type="text"] {
+  background-color: $blue-accent;
+  border-radius:    8px;
+  padding-left:     4px;
+  color:            $blue-primary;
+  font-weight:      bold;
+  font-size:        1.5rem;
+}
+
+.input-field.col.s12 .file-path-wrapper input[type="text"] {
+  background-color: $blue-accent;
+  border-radius: 8px;
+  padding-left: 4px;
+  color: $blue-primary;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+
+
 .wf-blue {
   &.bg-1 {
     background-color: $blue-primary;
@@ -41,6 +91,12 @@
     color: $blue-accent;
   }
 }
+
+
+.wf-blue-primary {
+  background-color: $blue-primary !important;
+}
+
 
 .wf-red {
   &.bg-1 {
