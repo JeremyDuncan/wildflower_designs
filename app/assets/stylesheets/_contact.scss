@@ -5,3 +5,16 @@
   border-radius: 8px;
   padding: 30px 35px 0px 0px;
 }
+
+.notification.is-success {
+  color:       $white;
+  font-weight: bold;
+  font-size:   2rem;
+  text-shadow: 2px 2px 2px black;
+}
+.notification.is-danger {
+  color:       $danger;
+  font-weight: bold;
+  font-size:   2rem;
+  text-shadow: 2px 2px 2px black;
+}
