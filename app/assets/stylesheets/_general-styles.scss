@@ -1,5 +1,6 @@
 @import 'mixins';
 
+
 .no-wrap {
   white-space: nowrap;
 }
@@ -12,7 +13,20 @@ body {
   font-family: $primary-font;
   color: $blue-font;
   margin:0px;
+  //font-family: 'Berkshire Swash', serif;
+  //font-family: 'Dancing Script', cursive;
+  //font-family: 'Lobster', sans-serif;
+  //font-family: 'Lugrasimo', cursive;
+  //font-family: 'Lumanosimo', cursive;
 }
+.lobster-font {
+  font-family: 'Lobster', sans-serif;
+}
+.lumanosimo-font {
+  font-family: 'Lumanosimo', cursive;
+
+}
+
 label{
   color: $white;
 }

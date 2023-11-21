@@ -16,8 +16,13 @@ header {
   @include           elevation-6;
   h2 {
     margin: 0;
+
   }
 }
+#main-logo{
+  font-family: 'Dancing Script', cursive;
+}
+
 header_two {
   background-color: #1a1a1a;
   padding:          0px;
