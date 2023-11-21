@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
+    @products_page = Page.find_by(title: "Products Page")
     @products = Product.all
   end
 

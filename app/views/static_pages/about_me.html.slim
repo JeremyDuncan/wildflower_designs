@@ -1,3 +1,6 @@
-h1 About Me
+- page = @about_me_page
 
+h1.center-align About Me
+- if page.present?
+  h5 #{page.content}
 | Add your information you ant your customers to know about you and your business.
