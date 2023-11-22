@@ -9,4 +9,7 @@ h1.center-align.lobster-font  Products
         = render product
   br
   .center-align
-    = link_to "Add product", new_product_path, class: 'btn waves-effect waves-light white-text'
+    = link_to new_product_path, class: 'btn waves-effect waves-light white-text' do
+      i.fa-solid.fa-plus style="font-size: 1rem;"
+      | &nbsp
+      | Add Product

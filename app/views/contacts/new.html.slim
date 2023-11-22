@@ -44,7 +44,10 @@ br
 
     .row
       .col.s12.center-flex style="margin-bottom: 20px"
-        = f.submit "Send Message", class: 'btn waves-effect waves-light white-text'
+        = button_tag(type: 'submit', class: 'btn waves-effect waves-light white-text') do
+          i.fa-solid.fa-paper-plane style="font-size: 1rem;"
+          | &nbsp&nbsp
+          | Send Message
 
 style
   |

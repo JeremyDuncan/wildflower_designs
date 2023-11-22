@@ -45,7 +45,10 @@
               - if image.image.present?
                 span Change Image
               - else
-                span Add Image
+                span
+                  i.fa-solid.fa-upload style="font-size: 1rem;"
+                  | &nbsp&nbsp
+                  | Upload Image
               = form.file_field :images, name: "product[images_attributes][#{index}][image]", id: "product_images_#{index}"
 
             .file-path-wrapper
@@ -67,14 +70,22 @@
 
     .new-image-fields
     .row.flex-container.center-flex
-      = button_tag 'Add More Images', type: 'button', id: 'add_more_images', class: 'btn waves-effect waves-light'
+      = button_tag 'Add More Images', type: 'button', id: 'add_more_images', class: 'btn waves-effect waves-light' do
+        i.fa-solid.fa-plus style="font-size: 1rem;"
+        | &nbsp
+        | Add Image
     br
     .row
       .flex-container.center-flex
-        = link_to "Cancel", products_path, class: 'btn waves-effect waves-light white-text'
+        = link_to  products_path, class: 'btn waves-effect waves-light white-text' do
+          i.fa-solid.fa-rectangle-xmark style="font-size: 1rem;"
+          | &nbsp&nbsp
+          | Cancel
         | &nbsp
         = button_tag type: 'submit', class: 'btn waves-effect waves-light white-text' do
           | Submit
+          | &nbsp&nbsp
+          i.fa-solid.fa-chevron-right style="font-size: 1rem;"
 
 javascript:
     $(document).ready(function () {
@@ -86,21 +97,18 @@ javascript:
               <div class="row">
                 <div class="file-field input-field col s12">
                   <div class="btn waves-effect waves-light">
-                    <span>Add Image</span>
+                    <span><i class="fa-solid fa-upload" style="font-size: 1rem;"></i>&nbsp Upload Image</span>
                     <input type="file" name="product[images_attributes][${imageFieldIndex}][image]">
                   </div>
                   <div class="file-path-wrapper">
                     <input class="file-path validate" type="text" placeholder="Upload Product Image" readonly>
                   </div>
                 </div>
-
-
                 <div class="input-field col s12 primary-field-bg-color">
                   <i class="material-icons prefix">text_snippet</i>
                   <textarea name="product[images_attributes][${imageFieldIndex}][caption]" id="caption_${imageFieldIndex}" class="materialize-textarea validate" style="height: 12vh;"></textarea>
                   <label for="caption_${imageFieldIndex}" class="white-text" style="padding-left: 10px;">Caption</label>
                 </div>
-
               </div>`;
             $('.image-fields').append(newField);
             imageFieldIndex++;
