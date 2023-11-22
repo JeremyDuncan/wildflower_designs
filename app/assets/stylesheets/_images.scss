@@ -62,8 +62,15 @@ image-container {
 //  background-size: cover;
 //}
 
+
 body {
-  background: url('assets/crystal_pattern.jpg') no-repeat center -1200px fixed;
-  background-size: 100% auto;
+  background: url('assets/crystal_pattern.jpg') no-repeat center -600px  fixed;
+  background-size: 1600px 1645px; /* or any sufficiently large height */
 }
 
+@media (max-width: 800px) {
+  body {
+    background-position: center center;
+    background-size: cover;
+  }
+}
