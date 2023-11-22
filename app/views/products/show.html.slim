@@ -15,9 +15,16 @@
               | #{image.caption}
 
   div.center-align
-    = link_to "Edit this product", edit_product_path(@product), class: 'btn waves-effect waves-light white-text'
+    = link_to  edit_product_path(@product), class: 'btn waves-effect waves-light white-text' do
+      i.fa-solid.fa-pen-to-square style="font-size: 1rem;"
+      |&nbsp&nbsp
+      | Edit this product
+
     | &nbsp
-    = link_to "Back to products", products_path, class: 'btn waves-effect waves-light white-text'
+    = link_to products_path, class: 'btn waves-effect waves-light white-text' do
+      i.fa-solid.fa-chevron-left style="font-size: 1rem;"
+      |&nbsp&nbsp
+      | Back to products
     br
     br
     = button_to "Remove this product", @product, method: :delete, class: 'btn waves-effect waves-light white-text', id: "delete-btn"
