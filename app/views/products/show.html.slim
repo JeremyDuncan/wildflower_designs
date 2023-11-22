@@ -18,13 +18,13 @@
     = link_to  edit_product_path(@product), class: 'btn waves-effect waves-light white-text' do
       i.fa-solid.fa-pen-to-square style="font-size: 1rem;"
       |&nbsp&nbsp
-      | Edit this product
+      | Edit
 
     | &nbsp
     = link_to products_path, class: 'btn waves-effect waves-light white-text' do
       i.fa-solid.fa-chevron-left style="font-size: 1rem;"
       |&nbsp&nbsp
-      | Back to products
+      | Back
     br
     br
     = button_to "Remove this product", @product, method: :delete, class: 'btn waves-effect waves-light white-text', id: "delete-btn"
