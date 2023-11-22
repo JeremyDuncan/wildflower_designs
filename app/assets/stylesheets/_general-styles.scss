@@ -47,6 +47,9 @@ a{
 .react-dark {
   @include bg-color-change-dark($blue-accent)
 }
+.rounded {
+  border-radius: 8px !important;
+}
 .rounded > img {border-radius: 8px;}
 //.card-link {
 //  @include color-change-dark($blue-secondary)

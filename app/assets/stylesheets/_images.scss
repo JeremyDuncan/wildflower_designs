@@ -12,3 +12,42 @@
   @include elevation-24;
 }
 
+.image-container {
+  background-color: $blue-accent;
+  border-radius: 8px;
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding:10px;
+  max-width: 50%;
+  width: 300px;
+  min-width: 30%;
+  @include elevation-24;
+}
+.image-container img {
+  max-width: 100%;
+}
+image-container {
+  max-width: 100%;
+}
+.image-container {
+  display: flex;
+  flex-direction: column;
+}
+
+// IMPORTANT
+.image-container img {
+  width: 100%;
+}
+.top-round > img{
+  border-radius: 8px 8px 0 0;
+}
+.caption {
+  background: $blue-primary;
+  width: 100%;
+  border-radius: 0 0 8px 8px;
+  padding: 8px;
+  color: $white;
+}
+
