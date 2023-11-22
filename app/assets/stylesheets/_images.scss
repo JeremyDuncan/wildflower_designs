@@ -62,10 +62,15 @@ image-container {
 //  background-size: cover;
 //}
 
+//
+//body {
+//  background: url('assets/crystal_pattern.jpg') no-repeat center -600px  fixed;
+//  background-size: 1600px 1645px; /* or any sufficiently large height */
+//}
 
 body {
-  background: url('assets/crystal_pattern.jpg') no-repeat center -600px  fixed;
-  background-size: 1600px 1645px; /* or any sufficiently large height */
+  background: url('assets/flora_bg_muted.webp') no-repeat center center fixed;
+  background-size: cover; /* or any sufficiently large height */
 }
 
 @media (max-width: 800px) {
