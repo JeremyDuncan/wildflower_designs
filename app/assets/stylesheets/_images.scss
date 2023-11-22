@@ -57,11 +57,13 @@ image-container {
 // This SCSS creates a semi-transparent background using the flower-bg.jpeg
 // image. The ::after pseudo-element is used for the transparency effect.
 // ------------------------------------------------------------------------------
+//body {
+//  background: url('assets/flower-bg.jpeg') no-repeat center 65px fixed;
+//  background-size: cover;
+//}
+
 body {
-  background: url('assets/flower-bg.jpeg') no-repeat center 65px fixed;
-  background-size: cover;
+  background: url('assets/crystal_pattern.jpg') no-repeat center -1200px fixed;
+  background-size: 100% auto;
 }
 
-//body {
-//  background: url('assets/floral-flower-background.png') repeat fixed;
-//}
