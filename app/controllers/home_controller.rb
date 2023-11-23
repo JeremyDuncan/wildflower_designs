@@ -1,6 +1,9 @@
 class HomeController < ApplicationController
   def index
-    @main_page = Page.find_by(title: "Main Page")
+    # ===========================================================================
+    # Fetches all pages with the title "Main Page"
+    # --------------------------------------------------------------------------
+    @pages = Page.where(title: "Main Page")
 
   end
 end

@@ -11,6 +11,12 @@ h1.center-align.lobster-font  Contact Me
 h5.center-align.lobster-font  For any questions or requests!
 .divider.wf-blue-primary
 br
+- @pages.each do |page|
+  .row
+    .col.s6.m12.offset-s3
+      .card-panel.wf-blue.bg-1.white-text
+        h5.center-align #{page.content}
+
 = form_for @contact, html: { class: 'col s12', style: "padding: 0px; margin: 0px; width: 80vw" } do |f|
   .contact-form.z-depth-3
     .row style="padding: 0px; margin: 0px;"

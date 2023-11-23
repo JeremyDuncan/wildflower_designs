@@ -4,10 +4,13 @@
 nav
   .nav-wrapper.wf-blue.bg-1
     a.brand-logo.flex.no-wrap[href="/"]
-      span#main-logo
+      span#main-logo style="display: flex; align-items: center; padding-left: 4px;"
+        = image_tag 'wildflower_logo_header.png', alt: 'Beautiful Wildflowers',
+                class: "responsive-img",
+                style: "height: 55px;",
+                id: "header-image"
         | &nbsp Wildflower Designs&nbsp;
-      i.material-icons
-        | local_florist
+
 
     a.sidenav-trigger[href="#" data-target="mobile-demo"]
       i.material-icons
@@ -16,8 +19,8 @@ nav
     ul.right.hide-on-med-and-down
       li.lumanosimo-font
         a[href="/products"] Products
-      / li.lumanosimo-font
-      /   a[href="/pages"] Requests
+      li.lumanosimo-font
+        a[href="/pages"] Create Message
       li.lumanosimo-font
         a[href="/about_me"] About Me
       li.lumanosimo-font
