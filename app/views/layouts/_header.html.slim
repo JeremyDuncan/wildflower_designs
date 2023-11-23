@@ -9,14 +9,15 @@ nav
                 class: "responsive-img",
                 style: "height: 100%;",
                 id: "header-image"
-        | &nbsp Wildflower Designs&nbsp;
+        span.hide-on-small-only
+          | &nbsp Wildflower Designs&nbsp;
 
 
     a.sidenav-trigger[href="#" data-target="mobile-demo"]
       i.material-icons style="padding-top: 10px"
         | menu
 
-    ul.right.hide-on-med-and-down style="padding-top: 8px"
+    ul.right.hide-on-med-and-down
       li.lumanosimo-font
         a[href="/products"] Products
       li.lumanosimo-font
@@ -37,7 +38,39 @@ ul.sidenav[id="mobile-demo"]
   li.lumanosimo-font
     a[href="/contacts/new"] Contact
 
+style
+  |
+    body > nav > div > ul > li > a {
+      height:      80px;
+      display:     flex;
+      align-items: center;
+    }
+
 javascript:
-    $(document).ready(function(){
-        $('.sidenav').sidenav();
+    $(document).ready(function () {
+        setTimeout(function () {
+            $('.sidenav').sidenav();
+        }, 100);
+
+        var lastScrollTop = 0;
+        var debounceTimer;
+
+        $(window).scroll(function () {
+            let currentScroll = $(this).scrollTop();
+
+            if (debounceTimer) {
+                clearTimeout(debounceTimer);
+            }
+
+            debounceTimer = setTimeout(function () {
+                if (currentScroll > lastScrollTop && currentScroll > 80) {
+                    // Scrolling down
+                    $('nav').addClass('hidden-header');
+                } else if (lastScrollTop > currentScroll) {
+                    // Scrolling up
+                    $('nav').removeClass('hidden-header');
+                }
+                lastScrollTop = currentScroll;
+            }, 100);
+        });
     });
