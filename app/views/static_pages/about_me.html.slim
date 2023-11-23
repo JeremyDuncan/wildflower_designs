@@ -1,6 +1,9 @@
-- page = @about_me_page
 #about-me style="height: 200%"
   h1.center-align.lobster-font  About Me
-  - if page.present?
-    h5 #{page.content}
+  - @pages.each do |page|
+    .row
+      .col.s6.m12.offset-s3
+        .card-panel.wf-blue.bg-1.white-text
+          h5.center-align #{page.content}
+
   | Add the information you want your customers to know about you and your business.

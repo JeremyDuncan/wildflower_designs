@@ -1,5 +1,13 @@
 h1.center-align.lobster-font  Products
 
+
+- @pages.each do |page|
+  .row
+    .col.s6.m12.offset-s3
+      .card-panel.wf-blue.bg-1.white-text
+        h5.center-align #{page.content}
+
+
 #products
   .flex-container
     - @products.each do |product|

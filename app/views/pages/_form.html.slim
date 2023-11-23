@@ -1,0 +1,40 @@
+= form_with(model: page, html: { class: "col s12", style: "width: 80vw", id: "page_form" }) do |form|
+  - if page.errors.any?
+    div style="color: red; text-shadow: 1px 1px 1px black;"
+      h2
+        = pluralize(page.errors.count, "error") + " prohibited this page from being saved:"
+      ul
+        - page.errors.each do |error|
+          li = error.full_message
+
+  .input-field.col.s12
+    = form.select :title,
+            options_for_select([['Select a Page', ''],
+                    ['Main Page', 'Main Page'],
+                    ['Product Page', 'Product Page'],
+                    ['About Me Page', 'About Me Page'],
+                    ['Contact Me Page', 'Contact Me Page']],
+                    selected: page.title)
+  .row
+    .input-field.col.s12.primary-field-bg-color
+      = form.label :content, class: "white-text", style: "padding-left: 10px;"
+      = form.text_area :content, id: "content", class: "materialize-textarea", required: true, style: "height: 30vh"
+
+  .row
+    .flex-container.center-flex
+      button[type="submit" id="save_button" class="btn waves-effect waves-light white-text"] Save Page
+
+javascript:
+    $(document).ready(function () {
+        let elems = document.querySelectorAll('select');
+        let instances = M.FormSelect.init(elems);
+
+        $('#page_form').on('submit', function(e) {
+            let titleSelected = $('#page_title').val() !== '';
+            let contentFilled = $('#content').val().trim() !== '';
+            if (!titleSelected || !contentFilled) {
+                e.preventDefault();
+                alert('Please select a title and fill in the content.');
+            }
+        });
+    });

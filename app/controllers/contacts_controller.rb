@@ -1,5 +1,6 @@
 class ContactsController < ApplicationController
   def new
+    @pages = Page.where(title: "Contact Me Page")
     @contact = Contact.new
   end
 
