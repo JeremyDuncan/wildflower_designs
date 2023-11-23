@@ -1,9 +1,9 @@
 div id=dom_id(page)
-
-  strong> Title:
-  = page.title
-
+  - if defined?(index)
+    strong> Message:
+    = index
   br
 
   strong> Content:
-  = page.content
+  .div style="white-space: pre-wrap;"
+    = message

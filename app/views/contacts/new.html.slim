@@ -15,7 +15,9 @@ br
   .row
     .col.s6.m12.offset-s3
       .card-panel.wf-blue.bg-1.white-text
-        h5.center-align #{page.content}
+        h5.left-align
+          .div style="white-space: pre-wrap;"
+            | #{page.content}
 
 = form_for @contact, html: { class: 'col s12', style: "padding: 0px; margin: 0px; width: 80vw" } do |f|
   .contact-form.z-depth-3

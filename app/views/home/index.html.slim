@@ -13,7 +13,9 @@
     .row
       .col.s6.m12.offset-s3
         .card-panel.wf-blue.bg-1.white-text
-          h5.center-align #{page.content}
+          h5.left-align
+            .div style="white-space: pre-wrap;"
+              | #{page.content}
 
 = image_tag 'flower_main.webp', alt: 'Beautiful Wildflowers',
         class: "image-placeholder hoverable responsive-img rounded",
