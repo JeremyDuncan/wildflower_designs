@@ -2,21 +2,21 @@
 / This adds navigation links. The header will also stick to the top of the screen.
 / --------------------------------------------------------------------------------
 nav
-  .nav-wrapper.wf-blue.bg-1
+  .nav-wrapper.wf-blue.bg-1 style="height: 80px; align-items: center;"
     a.brand-logo.flex.no-wrap[href="/"]
-      span#main-logo style="display: flex; align-items: center; padding-left: 4px;"
+      span#main-logo style="display: flex; align-items: center; height: 80px;"
         = image_tag 'wildflower_logo_header.png', alt: 'Beautiful Wildflowers',
                 class: "responsive-img",
-                style: "height: 55px;",
+                style: "height: 100%;",
                 id: "header-image"
         | &nbsp Wildflower Designs&nbsp;
 
 
     a.sidenav-trigger[href="#" data-target="mobile-demo"]
-      i.material-icons
+      i.material-icons style="padding-top: 10px"
         | menu
 
-    ul.right.hide-on-med-and-down
+    ul.right.hide-on-med-and-down style="padding-top: 8px"
       li.lumanosimo-font
         a[href="/products"] Products
       li.lumanosimo-font
