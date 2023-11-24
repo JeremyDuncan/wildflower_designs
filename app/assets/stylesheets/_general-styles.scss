@@ -51,6 +51,13 @@ a{
   border-radius: 8px !important;
 }
 .rounded > img {border-radius: 8px;}
-//.card-link {
-//  @include color-change-dark($blue-secondary)
-//}
+
+.phone-wrap {
+  display: flex;
+}
+
+@media screen and (max-width: 768px) {
+  .phone-wrap {
+    flex-direction: column;
+  }
+}

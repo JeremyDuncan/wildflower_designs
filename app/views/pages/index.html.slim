@@ -8,7 +8,6 @@ h1.lobster-font.center-align
       .divider.wf-blue.bg-1
     .flex-container
       - pages.each_with_index do |page, index|
-        - log(index, "index")
         .card-panel.wf-blue.bg-3.text-1.hoverable.flex-item.quarter.space-between style="display: flex; flex-direction: column;"
           = render partial: 'page', locals: { page: page, message: page.content, index: index + 1 }
 

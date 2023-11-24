@@ -1,4 +1,4 @@
-= form_with(model: page, html: { class: "col s12", style: "width: 80vw", id: "page_form" }) do |form|
+= form_with(model: page, html: { class: "col s12 m12", style: "width: 100%", id: "page_form" }) do |form|
   - if page.errors.any?
     div style="color: red; text-shadow: 1px 1px 1px black;"
       h2
@@ -6,40 +6,50 @@
       ul
         - page.errors.each do |error|
           li = error.full_message
+  .contact-form.z-depth-3 style="padding-left: 35px; display: flex;flex-direction: column; justify-content: center"
+    .input-field.col.s12.m12.primary-field-bg-color style="display: flex;  width: 100%; align-items: center"
+      i.fa-solid.fa-pager style="font-size: 1.5rem"
+      | &nbsp&nbsp
+      = form.select :title,
+              options_for_select([['Select a Page', ''],
+                      ['Main Page', 'Main Page'],
+                      ['Product Page', 'Product Page'],
+                      ['About Me Page', 'About Me Page'],
+                      ['Contact Me Page', 'Contact Me Page']],
+                      selected: page.title)
+    .row
+      .input-field.col.s12.primary-field-bg-color  style="display: flex; width: 100%; align-items: center"
+        i.fa-solid.fa-file-lines style="font-size: 1.5rem"
+        | &nbsp&nbsp
+        / = form.label :content, class: "white-text", style: "padding-left: 10px;"
+        = form.text_area :content, id: "content", class: "materialize-textarea", required: true, style: "height: 30vh"
 
-  .input-field.col.s12
-    = form.select :title,
-            options_for_select([['Select a Page', ''],
-                    ['Main Page', 'Main Page'],
-                    ['Product Page', 'Product Page'],
-                    ['About Me Page', 'About Me Page'],
-                    ['Contact Me Page', 'Contact Me Page']],
-                    selected: page.title)
-  .row
-    .input-field.col.s12.primary-field-bg-color
-      = form.label :content, class: "white-text", style: "padding-left: 10px;"
-      = form.text_area :content, id: "content", class: "materialize-textarea", required: true, style: "height: 30vh"
+    .row.phone-wrap  style="display: flex; width: 100%;"
+      .input-field.col.s12.primary-field-bg-color  style="display: flex; width: 100%; align-items: center"
+        i.fa-solid.fa-align-left style="font-size: 1.5rem"
+        | &nbsp&nbsp
+        = form.select :alignment, options_for_select([['Select Text Alignment', 'center'],['Left', 'left'], ['Center', 'center'], ['Right', 'right']], selected: page.alignment)
 
-  .row
-    .input-field.col.s12
-      = form.select :alignment, options_for_select([['Select Text Alignment', 'center'],['Left', 'left'], ['Center', 'center'], ['Right', 'right']], selected: page.alignment)
-
-  .row
-    .input-field.col.s12
-      = form.select :font_size, options_for_select([ ['Select Text Size', 'default'],['Default', 'default'], ['Small', '.8rem'], ['Medium', '1.5rem'], ['Large', '2rem'], ['Extra Large', '3rem']], selected: page.font_size)
-
-  .row
-    .input-field.col.s12
-      = form.select :text_color, options_for_select([['Select Font Color', 'default'],['White', 'white'], ['Black', 'black'], ['Red', 'red'], ['Blue', 'blue'], ['Green', 'green'], ['Yellow', 'yellow']], selected: page.text_color)
+      .input-field.col.s12.primary-field-bg-color style="display: flex; width: 100%; align-items: center"
+        i.fa-solid.fa-text-height style="font-size: 1.5rem"
+        | &nbsp&nbsp
+        = form.select :font_size, options_for_select([ ['Select Text Size', 'default'],['Default', 'default'], ['Small', '.8rem'], ['Medium', '1.5rem'], ['Large', '2rem'], ['Extra Large', '3rem']], selected: page.font_size)
 
 
-  .row
-    .input-field.col.s12
-      = form.select :hidden, options_for_select([['Hide Message?', false],['No', false], ['Yes', true]], selected: page.hidden)
+      .input-field.col.s12.primary-field-bg-color style="display: flex; width: 100%; align-items: center"
+        i.fa-solid.fa-palette style="font-size: 1.5rem"
+        | &nbsp&nbsp
+        = form.select :text_color, options_for_select([['Select Font Color', 'default'],['White', 'white'], ['Black', 'black'], ['Red', 'red'], ['Blue', 'blue'], ['Green', 'green'], ['Yellow', 'yellow']], selected: page.text_color)
 
-  .row
-    .flex-container.center-flex
-      button[type="submit" id="save_button" class="btn waves-effect waves-light white-text"] Save Page
+
+      .input-field.col.s12.primary-field-bg-color style="display: flex; width: 100%; align-items: center"
+        i.fa-solid.fa-user-ninja style="font-size: 1.5rem"
+        | &nbsp&nbsp
+        = form.select :hidden, options_for_select([['Hide Message?', false],['No', false], ['Yes', true]], selected: page.hidden)
+
+    .row
+      .flex-container.center-flex
+        button[type="submit" id="save_button" class="btn waves-effect waves-light white-text"] Save Page
 
 
 javascript:
