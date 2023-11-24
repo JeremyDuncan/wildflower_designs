@@ -55,8 +55,9 @@ nav {
 }
 ul.sidenav {
   background-color: $blue-primary;
-  width: 150px;
+  width: 225px;
   justify-content: center;
+  padding-top: 20px;
   li > div {
     justify-content: center;
   }
@@ -64,4 +65,17 @@ ul.sidenav {
     color: white;
   }
 
+}
+#mobile-demo > li > span  {
+  a {
+    font-size: 2rem !important;
+  }
+  i {
+    font-size: 2rem !important;
+  }
+}
+
+#mobile-demo > li {
+  display: flex;
+  justify-content: space-between;
 }
