@@ -2,41 +2,44 @@
 .flex-column.center-flex
   br
   br
-  .page-title.lobster-font  #{product.name}
-  .page-title.lobster-font $#{product.price}
+  .contact-form.z-depth-3.center-align style="padding-left: 35px; display: flex;flex-direction: column; justify-content: center"
+    .page-title.lobster-font  #{product.name}
+    .page-title.lobster-font $#{product.price}
 
-  .row
-    .col.m12.s12
-      .card-panel.wf-blue.bg-3.text-1.rounded style="font-size: 1.2rem; padding-left: 10px;"
-        | #{product.details }
+    .row
+      .col.m12.s12
+        .card-panel.wf-blue.bg-3.text-1.rounded style="font-size: 1.2rem; padding-left: 10px; max-width: 450px !important"
+          | #{product.details }
 
-  - product.images.each do |image|
-      - if image.image?
-        .top-round.image-container.flex-column
-          = image_tag(image.image.url)
-          - if image.caption.present?
-            .caption
-              | #{image.caption}
+    - product.images.each do |image|
+        - if image.image?
+          .top-round.image-container.flex-column
+            = image_tag(image.image.url)
+            - if image.caption.present?
+              .caption
+                | #{image.caption}
 
-  div.center-align
-    = link_to  edit_product_path(@product), class: 'btn waves-effect waves-light white-text' do
-      i.fa-solid.fa-pen-to-square style="font-size: 1rem;"
-      |&nbsp&nbsp
-      | Edit
+    div.center-align
+      = link_to  edit_product_path(@product), class: 'btn waves-effect waves-light white-text' do
+        i.fa-solid.fa-pen-to-square style="font-size: 1rem;"
+        |&nbsp&nbsp
+        | Edit
 
-    | &nbsp
-    = link_to products_path, class: 'btn waves-effect waves-light white-text' do
-      i.fa-solid.fa-chevron-left style="font-size: 1rem;"
-      |&nbsp&nbsp
-      | Back
-    br
-    br
-    = button_to "Remove this product", @product, method: :delete, class: 'btn waves-effect waves-light white-text', id: "delete-btn"
-    /## DELETE BUTTON ##
-    a.open-modal.delete-button.btn.waves-effect.waves-yellow.white-text.red
-      div.no-wrap
-        i.fa-solid.fa-trash
-        |  Remove
+      | &nbsp
+      = link_to products_path, class: 'btn waves-effect waves-light white-text' do
+        i.fa-solid.fa-chevron-left style="font-size: 1rem;"
+        |&nbsp&nbsp
+        | Back
+      br
+      br
+      = button_to "Remove this product", @product, method: :delete, class: 'btn waves-effect waves-light white-text', id: "delete-btn"
+      /## DELETE BUTTON ##
+      a.open-modal.delete-button.btn.waves-effect.waves-yellow.white-text.red
+        div.no-wrap
+          i.fa-solid.fa-trash
+          |  Remove
+      br
+      br
 
 /###############################################################################
 /## MODAL SECTION ##
