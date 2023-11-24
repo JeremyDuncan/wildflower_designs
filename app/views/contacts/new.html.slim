@@ -1,10 +1,10 @@
-- if flash[:notice]
-  .notification.is-success.center-align
-    p= flash[:notice]
-
-- if flash[:alert]
-  .notification.is-danger.center-align
-    p= flash[:alert]
+/ - if flash[:notice]
+/   .notification.is-success.center-align
+/     p= flash[:notice]
+/
+/ - if flash[:alert]
+/   .notification.is-danger.center-align
+/     p= flash[:alert]
 
 
 h1.center-align.lobster-font  Contact Me
@@ -21,8 +21,17 @@ br
               | #{page.content}
 
 
-= form_for @contact, html: { class: 'col s12', style: "padding: 0px; margin: 0px; width: 80vw" } do |f|
+= form_for @contact, html: { class: 'col s12', style: "padding: 0px; margin: 0px; width: 100%" } do |f|
   .contact-form.z-depth-3
+    - if flash[:notice]
+      .notification.is-success.center-align
+        p= flash[:notice]
+      br
+    - if flash[:alert]
+      .notification.is-danger.center-align
+        p= flash[:alert]
+      br
+
     .row style="padding: 0px; margin: 0px;"
       .input-field.col.s12.m6.primary-field-bg-color
         i.material-icons.prefix person_outline
