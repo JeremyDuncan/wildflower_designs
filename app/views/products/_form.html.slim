@@ -9,83 +9,84 @@
       br
         h3 Reload and try again.
   - else
-    .row
-      .input-field.col.s12.m6.primary-field-bg-color
-        i.material-icons.prefix shopping_bag
-        = form.text_field :name, id: "name"
-        = form.label :product_name, class: "white-text", style: "padding-left: 10px;"
+    .contact-form.z-depth-3 style="padding-left: 35px; display: flex;flex-direction: column; justify-content: center"
+      .row
+        .input-field.col.s12.m6.primary-field-bg-color
+          i.material-icons.prefix shopping_bag
+          = form.text_field :name, id: "name"
+          = form.label :product_name, class: "white-text", style: "padding-left: 10px;"
 
-      .input-field.col.s12.m6.primary-field-bg-color
-        i.material-icons.prefix attach_money
-        = form.number_field :price, id: "price", step: '0.01'
-        = form.label :price, class: "white-text", style: "padding-left: 10px;"
+        .input-field.col.s12.m6.primary-field-bg-color
+          i.material-icons.prefix attach_money
+          = form.number_field :price, id: "price", step: '0.01'
+          = form.label :price, class: "white-text", style: "padding-left: 10px;"
 
-    .row
-      .input-field.col.s12.primary-field-bg-color
-        i.material-icons.prefix description
-        = form.text_area :details, id: "details", class: "materialize-textarea", style: "height: 30vh"
-        = form.label :product_details, class: "white-text", style: "padding-left: 10px;"
-
-
-    h4 Product Images
-    .divider.wf-blue-primary
-    .image-fields
-      - product.images.each_with_index do |image, index|
-        .row
-          .col.s6 style="display: flex; flex-direction: column; width: 15vw;"
-            = image_tag(image.image.thumb_medium.url) if image.image.present?
-            - if image.image.present?
-              label
-                = form.check_box "images_attributes[#{index}][_destroy]"
-                span Remove Image
+      .row
+        .input-field.col.s12.primary-field-bg-color
+          i.material-icons.prefix description
+          = form.text_area :details, id: "details", class: "materialize-textarea", style: "height: 30vh"
+          = form.label :product_details, class: "white-text", style: "padding-left: 10px;"
 
 
-          .file-field.input-field.col.s12
-            .btn.waves-effect.waves-light
+      h4 Product Images
+      .divider.wf-blue-primary
+      .image-fields
+        - product.images.each_with_index do |image, index|
+          .row
+            .col.s6 style="display: flex; flex-direction: column; width: 15vw;"
+              = image_tag(image.image.thumb_medium.url) if image.image.present?
               - if image.image.present?
-                span Change Image
-              - else
-                span
-                  i.fa-solid.fa-upload style="font-size: 1rem;"
-                  | &nbsp&nbsp
-                  | Upload Image
-              = form.file_field :images, name: "product[images_attributes][#{index}][image]", id: "product_images_#{index}"
-
-            .file-path-wrapper
-              - if image.image.file
-                input.file-path.validate type="text" value=image.image.file.filename placeholder="Upload Product Image" readonly="true"
-              - else
-                input.file-path.validate type="text" placeholder="Upload Product Image" readonly="true"
-              = form.hidden_field :id, name: "product[images_attributes][#{index}][id]", value: image.id
-
-          .input-field.col.s12.primary-field-bg-color
-            i.material-icons.prefix text_snippet
-            = form.text_area :caption, value: image.caption,
-                    name:  "product[images_attributes][#{index}][caption]",
-                    id:    "caption_#{index}",
-                    class: 'validate',
-                    style: "height: 12vh"
-            = form.label :caption, 'Image Caption', class: "white-text", style: "padding-left: 10px;"
+                label
+                  = form.check_box "images_attributes[#{index}][_destroy]"
+                  span Remove Image
 
 
-    .new-image-fields
-    .row.flex-container.center-flex
-      = button_tag 'Add More Images', type: 'button', id: 'add_more_images', class: 'btn waves-effect waves-light' do
-        i.fa-solid.fa-plus style="font-size: 1rem;"
-        | &nbsp
-        | Add Image
-    br
-    .row
-      .flex-container.center-flex
-        = link_to  products_path, class: 'btn waves-effect waves-light white-text' do
-          i.fa-solid.fa-rectangle-xmark style="font-size: 1rem;"
-          | &nbsp&nbsp
-          | Cancel
-        | &nbsp
-        = button_tag type: 'submit', class: 'btn waves-effect waves-light white-text' do
-          | Submit
-          | &nbsp&nbsp
-          i.fa-solid.fa-chevron-right style="font-size: 1rem;"
+            .file-field.input-field.col.s12
+              .btn.waves-effect.waves-light
+                - if image.image.present?
+                  span Change Image
+                - else
+                  span
+                    i.fa-solid.fa-upload style="font-size: 1rem;"
+                    | &nbsp&nbsp
+                    | Upload Image
+                = form.file_field :images, name: "product[images_attributes][#{index}][image]", id: "product_images_#{index}"
+
+              .file-path-wrapper
+                - if image.image.file
+                  input.file-path.validate type="text" value=image.image.file.filename placeholder="Upload Product Image" readonly="true"
+                - else
+                  input.file-path.validate type="text" placeholder="Upload Product Image" readonly="true"
+                = form.hidden_field :id, name: "product[images_attributes][#{index}][id]", value: image.id
+
+            .input-field.col.s12.primary-field-bg-color
+              i.material-icons.prefix text_snippet
+              = form.text_area :caption, value: image.caption,
+                      name:  "product[images_attributes][#{index}][caption]",
+                      id:    "caption_#{index}",
+                      class: 'validate',
+                      style: "height: 12vh"
+              = form.label :caption, 'Image Caption', class: "white-text", style: "padding-left: 10px;"
+
+
+      .new-image-fields
+      .row.flex-container.center-flex
+        = button_tag 'Add More Images', type: 'button', id: 'add_more_images', class: 'btn waves-effect waves-light' do
+          i.fa-solid.fa-plus style="font-size: 1rem;"
+          | &nbsp
+          | Add Image
+      br
+      .row
+        .flex-container.center-flex
+          = link_to  products_path, class: 'btn waves-effect waves-light white-text' do
+            i.fa-solid.fa-rectangle-xmark style="font-size: 1rem;"
+            | &nbsp&nbsp
+            | Cancel
+          | &nbsp
+          = button_tag type: 'submit', class: 'btn waves-effect waves-light white-text' do
+            | Submit
+            | &nbsp&nbsp
+            i.fa-solid.fa-chevron-right style="font-size: 1rem;"
 
 javascript:
     $(document).ready(function () {
