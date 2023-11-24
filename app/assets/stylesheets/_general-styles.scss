@@ -56,8 +56,16 @@ a{
   display: flex;
 }
 
+.page-title {
+  font-size: 3.5rem;
+}
+
 @media screen and (max-width: 768px) {
   .phone-wrap {
     flex-direction: column;
   }
+  .page-title  {
+    font-size: 2rem !important; /* larger font size for screens wider than 600px */
+  }
 }
+
