@@ -2,11 +2,11 @@
   h1.center-align.lobster-font  About Me
   - @pages.each do |page|
     .row style="max-width: 800px;"
-      .col.m12
+      .col.m12.s12
         .card-panel.wf-blue.bg-1.white-text
           h5
             span class="#{page.alignment}-align;"
-              .div style="white-space: pre-wrap; color: #{page.text_color}; font-size: #{page.font_size}"
+              .div style="white-space: pre-wrap; color: #{page.text_color}; font-size: #{page.font_size}; text-align: #{page.alignment}"
                 | #{page.content}
 
   | Add the information you want your customers to know about you and your business.
