@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
-    @pages = Page.where(title: "Product Page")
+    @pages = Page.where(title: "Product Page").where.not(hidden: true)
     @products = Product.all
   end
 

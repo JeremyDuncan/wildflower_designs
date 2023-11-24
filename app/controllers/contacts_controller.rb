@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
   def new
-    @pages = Page.where(title: "Contact Me Page")
+    @pages = Page.where(title: "Contact Me Page").where.not(hidden: true)
     @contact = Contact.new
   end
 

@@ -1,6 +1,4 @@
 .container.center-align
-
-
   = image_tag 'wildflower_logo_1.webp', alt: 'Beautiful Wildflowers',
           class: "image-placeholder hoverable responsive-img rounded",
           style: "width: 100%; margin-top: 60px;",
@@ -10,9 +8,10 @@
     .row style="max-width: 800px;"
       .col.m12
         .card-panel.wf-blue.bg-1.white-text
-          h5.left-align
-            .div style="white-space: pre-wrap;"
-              | #{page.content}
+          h5
+            span class="#{page.alignment}-align;"
+              .div style="white-space: pre-wrap; color: #{page.text_color}; font-size: #{page.font_size}"
+                | #{page.content}
 
 = image_tag 'flower_main.webp', alt: 'Beautiful Wildflowers',
         class: "image-placeholder hoverable responsive-img rounded",
