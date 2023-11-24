@@ -17,26 +17,43 @@ nav
       i.material-icons style="padding-top: 10px"
         | menu
 
-    ul.right.hide-on-med-and-down
+    ul.right.hide-on-med-and-down style="display: flex; align-items: center"
       li.lumanosimo-font
-        a[href="/products"] Products
+        span style="display: flex; align-items: center; height: 100%"
+          i.fa-solid.fa-shirt.white-text
+          a[href="/products"] Products
       li.lumanosimo-font
-        a[href="/pages"] Create Message
+        span style="display: flex; align-items: center; height: 100%"
+          i.fa-solid.fa-square-plus.white-text
+          a[href="/pages"] Create Message
       li.lumanosimo-font
-        a[href="/about_me"] About Me
+        span style="display: flex; align-items: center; height: 100%"
+          i.fa-solid.fa-circle-info.white-text
+          a[href="/about_me"] About Me
       li.lumanosimo-font
-        a[href="/contacts/new"] Contact
+        span style="display: flex; align-items: center; height: 100%"
+          i.fa-solid.fa-address-card.white-text
+          a[href="/contacts/new"] Contact
 
 
 ul.sidenav[id="mobile-demo"]
   li.lumanosimo-font
-    a[href="/products"] Products
+    span style="padding-left: 20px;"
+      i.fa-solid.fa-shirt.white-text
+      | &nbsp
+      a[href="/products"] Products
   / li.lumanosimo-font
   /   a[href="#"] Requests
   li.lumanosimo-font
-    a[href="/about_me"] About Me
+    span style="padding-left: 20px;"
+      i.fa-solid.fa-circle-info.white-text
+      | &nbsp
+      a[href="/about_me"] About Me
   li.lumanosimo-font
-    a[href="/contacts/new"] Contact
+    span style="padding-left: 20px;"
+      i.fa-solid.fa-address-card.white-text
+      | &nbsp
+      a[href="/contacts/new"] Contact
 
 style
   |
@@ -44,6 +61,12 @@ style
       height:      80px;
       display:     flex;
       align-items: center;
+    }
+    body > nav > div > ul > li > span > a {
+     height:      80px;
+     align-items: center;
+     display:     flex;
+     padding-left: 5px;
     }
 
 javascript:

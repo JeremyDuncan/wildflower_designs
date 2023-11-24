@@ -50,9 +50,18 @@ nav {
 .hidden-header {
   top: -80px; /* Adjust this value based on the actual height of your header */
 }
-
-
-
 #header-image {
   border-radius: 1px;
+}
+ul.sidenav {
+  background-color: $blue-primary;
+  width: 150px;
+  justify-content: center;
+  li > div {
+    justify-content: center;
+  }
+  li > a{
+    color: white;
+  }
+
 }
