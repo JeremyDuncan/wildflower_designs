@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
+  # devise_for :users
+  # config/routes.rb
+
+  devise_for :users, controllers: { registrations: 'custom_registrations' }
+
   # get 'contacts/new'
   # get 'contacts/create'
   resources :contacts, only: [:new, :create]

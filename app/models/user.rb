@@ -4,5 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  attribute :admin, :boolean, default: false
+  validate :email_allowed
+
+  private
+
+  def email_allowed
+    allowed_emails = ['jeremy.duncan1984@gmail.com', 'another_allowed@example.com'] # List allowed emails here
+    errors.add(:email, "is not allowed") unless allowed_emails.include?(email.downcase)
+  end
 end
