@@ -20,26 +20,30 @@
                 | #{image.caption}
 
     div.center-align
-      = link_to  edit_product_path(@product), class: 'btn waves-effect waves-light white-text' do
-        i.fa-solid.fa-pen-to-square style="font-size: 1rem;"
-        |&nbsp&nbsp
-        | Edit
-
-      | &nbsp
       = link_to products_path, class: 'btn waves-effect waves-light white-text' do
         i.fa-solid.fa-chevron-left style="font-size: 1rem;"
         |&nbsp&nbsp
         | Back
       br
       br
-      = button_to "Remove this product", @product, method: :delete, class: 'btn waves-effect waves-light white-text', id: "delete-btn"
-      /## DELETE BUTTON ##
-      a.open-modal.delete-button.btn.waves-effect.waves-yellow.white-text.red
-        div.no-wrap
-          i.fa-solid.fa-trash
-          |  Remove
-      br
-      br
+      - if user_signed_in?
+        .center-flex
+          = link_to edit_product_path(@product), class: 'btn waves-effect waves-light white-text' do
+            i.fa-solid.fa-pen-to-square.orange-text style="font-size: 1rem;"
+            |&nbsp&nbsp
+            span.orange-text
+              | Edit
+
+          | &nbsp
+          = button_to "Remove this product", @product, method: :delete, class: 'btn waves-effect waves-light white-text', id: "delete-btn"
+          /## DELETE BUTTON ##
+          a.open-modal.delete-button.btn.waves-effect.waves-yellow.white-text.red
+            div.no-wrap
+              i.fa-solid.fa-trash
+              |  Remove
+        br
+        br
+
 
 /###############################################################################
 /## MODAL SECTION ##

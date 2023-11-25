@@ -1,0 +1,46 @@
+/ Flash messages
+- if flash[:notice]
+  .notification.is-success.center-align
+    p= flash[:notice]
+
+- if flash[:alert]
+  .notification.is-danger.center-align
+    p= flash[:alert]
+
+/ Devise Login Form
+h2.center-align.lobster-font Log in
+
+= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'col s12' }) do |f|
+  .card-panel.z-depth-3
+    .row
+      .input-field.col.s12
+        i.material-icons.prefix email
+        = f.label :email
+        = f.email_field :email, autofocus: true, autocomplete: "email"
+
+    .row
+      .input-field.col.s12
+        i.material-icons.prefix lock_outline
+        = f.label :password
+        = f.password_field :password, autocomplete: "current-password"
+
+    .row
+      .col.s12.center
+        = f.submit "Log in", class: 'btn waves-effect waves-light'
+
+    .row
+      .col.s12.center-align
+        = render "devise/shared/links"
+
+style
+  |
+    .card-panel {
+      padding: 20px;
+      margin-top: 20px;
+    }
+    .input-field label {
+      color: #9e9e9e; /* Change as per your color scheme */
+    }
+    .btn {
+      background-color: #007bff; /* Change button color */
+    }

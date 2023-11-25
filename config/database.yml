@@ -20,4 +20,4 @@ test:
 production:
   <<: *default
   database: wildflower_designs_production
-  password: <%= ENV['DB_PASSWORD']  || Rails.application.credentials.dig(:database, :password) %>
+  password: <%= ENV.fetch("DB_PASSWORD", Rails.application.credentials.dig(:database, :password)) %>

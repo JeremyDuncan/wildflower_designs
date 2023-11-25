@@ -1,0 +1,30 @@
+doctype html
+html
+  head
+    style
+      | body { font-family: Arial, sans-serif; }
+      | .container { width: 100%; max-width: 600px; margin: 0 auto; padding: 20px; }
+      | .header { background-color: #009688; color: white; padding: 10px; text-align: center; }
+      | .content { background-color: #f2f2f2; padding: 20px; }
+      | .footer { background-color: #eee; color: #333; text-align: center; padding: 10px; }
+  body
+    div.container
+      div.header
+        h1 Account Locked
+
+      div.content
+        p
+          | Hello #{@resource.email},
+
+        p
+          | Your account has been locked due to an excessive number of unsuccessful sign in attempts.
+
+        p
+          | Click the link below to unlock your account:
+
+        p
+          = link_to 'Unlock my account', unlock_url(@resource, unlock_token: @token)
+
+      div.footer
+        p
+          | © #{Time.now.year} Wildflower Designs
