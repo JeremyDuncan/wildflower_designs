@@ -9,7 +9,7 @@ class User < ApplicationRecord
   private
 
   def email_allowed
-    allowed_emails = ['jeremy.duncan1984@gmail.com', 'another_allowed@example.com'] # List allowed emails here
+    allowed_emails = ['jeremy.duncan1984@gmail.com', 'wildflowerdesigns0923@gmail.com'] # List allowed emails here
     errors.add(:email, "is not allowed") unless allowed_emails.include?(email.downcase)
   end
 end
