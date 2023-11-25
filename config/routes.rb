@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   # get 'contacts/new'
   # get 'contacts/create'
   resources :contacts, only: [:new, :create]
@@ -19,4 +20,8 @@ Rails.application.routes.draw do
 
   get 'home/index'
   root 'home#index'
+
+  namespace :admin do
+    get '/', to: 'dashboard#index', as: :admin_root # This creates the path '/admin'
+  end
 end

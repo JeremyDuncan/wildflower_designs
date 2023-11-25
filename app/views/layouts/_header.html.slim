@@ -10,7 +10,12 @@ nav
                 style: "height: 100%;",
                 id: "header-image"
         span.hide-on-small-only
-          | &nbsp Wildflower Designs&nbsp;
+          - if user_signed_in?
+            span.admin-font style="color: orange;"
+              i.fa-solid.fa-triangle-exclamation
+              | ADMIN MODE
+          - else
+            | &nbsp Wildflower Designs&nbsp;
 
 
     a.sidenav-trigger[href="#" data-target="mobile-demo"]
@@ -22,10 +27,7 @@ nav
         span style="display: flex; align-items: center; height: 100%"
           i.fa-solid.fa-shirt.white-text
           a[href="/products"] Products
-      li.lumanosimo-font
-        span style="display: flex; align-items: center; height: 100%"
-          i.fa-solid.fa-square-plus.white-text
-          a[href="/pages"] Create Message
+
       li.lumanosimo-font
         span style="display: flex; align-items: center; height: 100%"
           i.fa-solid.fa-circle-info.white-text
@@ -35,6 +37,23 @@ nav
           i.fa-solid.fa-address-card.white-text
           a[href="/contacts/new"] Contact
 
+      - if user_signed_in?
+        li.lumanosimo-font
+          span style="display: flex; align-items: center; height: 100%"
+            i.fa-solid.fa-square-plus.orange-text
+            a.orange-text[href="/pages"] Messages
+
+        li.lumanosimo-font
+          span style="display: flex; align-items: center; height: 100%"
+            i.fa-solid.fa-square-plus.orange-text
+            a.orange-text[href="/products/new"] Add Product
+
+        li.lumanosimo-font
+          span style="display: flex; align-items: center; height: 100%; padding-right: 10px;"
+            i.fa-solid.fa-right-from-bracket.white-text
+            | &nbsp
+            = button_to destroy_user_session_path, method: :delete, class: "logout-btn", style: "cursor: pointer; border-radius: 6px;" do
+              | Logout
 
 ul.sidenav[id="mobile-demo"]
   li.lumanosimo-font
@@ -42,18 +61,46 @@ ul.sidenav[id="mobile-demo"]
       i.fa-solid.fa-shirt.white-text
       | &nbsp
       a[href="/products"] Products
-  / li.lumanosimo-font
-  /   a[href="#"] Requests
+
   li.lumanosimo-font
     span style="padding-left: 20px;"
       i.fa-solid.fa-circle-info.white-text
       | &nbsp
       a[href="/about_me"] About Me
+
   li.lumanosimo-font
     span style="padding-left: 20px;"
       i.fa-solid.fa-address-card.white-text
       | &nbsp
       a[href="/contacts/new"] Contact
+
+  - if user_signed_in?
+    .divider
+    br
+    span.ce style="color: orange; padding-left: 40px; font-size: 1.2rem"
+      i.fa-solid.fa-triangle-exclamation
+      | &nbsp
+      | ADMIN MODE
+    br
+    br
+    li.lumanosimo-font
+      span style="padding-left: 20px; font-size: 2rem"
+        i.fa-solid.fa-square-plus.orange-text
+        | &nbsp
+        a.orange-text[href="/pages"] Messages
+    li.lumanosimo-font
+      span style="padding-left: 20px; font-size: 2rem"
+        i.fa-solid.fa-square-plus.orange-text
+        | &nbsp
+        a.orange-text[href="/products/new"] Product
+    br
+    br
+    li.lumanosimo-font
+      span style="display: flex; align-items: center; height: 100%; padding-left: 20px; font-size: 2rem"
+        i.fa-solid.fa-right-from-bracket.white-text
+        | &nbsp
+        = button_to destroy_user_session_path, method: :delete, class: "logout-btn", style: "cursor: pointer; border-radius: 6px;" do
+          | Logout
 
 style
   |

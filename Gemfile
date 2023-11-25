@@ -47,6 +47,7 @@ gem 'pg'
 gem 'carrierwave'
 gem 'fog-aws'
 gem 'mini_magick'
+gem 'devise'
 
 
 # Use Sass to process CSS

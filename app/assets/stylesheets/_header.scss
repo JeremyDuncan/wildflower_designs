@@ -79,3 +79,17 @@ ul.sidenav {
   display: flex;
   justify-content: space-between;
 }
+
+.logout-btn {
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+  background-color: #ffffff;
+  &:hover {
+    background-color: $danger;
+    color: $white
+  }
+  &:active {
+    background-color: lighten($danger, 20%);
+    color: $white
+  }
+}
