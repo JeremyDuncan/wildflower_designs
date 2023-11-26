@@ -17,24 +17,24 @@ nav
       li.lumanosimo-font
         span style="display: flex; align-items: center; height: 100%"
           i.fa-solid.fa-shirt.white-text
-          a[href="/products"] Products
+          a.header-text[href="/products"] Products
 
       li.lumanosimo-font
         span style="display: flex; align-items: center; height: 100%"
           i.fa-solid.fa-circle-info.white-text
-          a[href="/about_me"] About Me
+          a.header-text[href="/about_me"] About Me
 
       li.lumanosimo-font
         span style="display: flex; align-items: center; height: 100%"
           i.fa-solid.fa-address-card.white-text
-          a[href="/contacts/new"] Contact
+          a.header-text[href="/contacts/new"] Contact
 
       - if user_signed_in?
         - if current_user.admin?
           li.lumanosimo-font
-            span style="display: flex; align-items: center; height: 100%"
+            span style="display: flex; align-items: center; height: 100%; padding-right: 10px;"
               i.fa-solid.fa-user-gear.orange-text
-              a.orange-text[href="/admin"] Admin
+              a.orange-text.header-text[href="/admin"]Admin
 
         li.lumanosimo-font
           span style="display: flex; align-items: center; height: 100%; padding-right: 10px;"
