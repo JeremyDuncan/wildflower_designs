@@ -5,18 +5,9 @@ nav
   .nav-wrapper.wf-blue.bg-1 style="height: 80px; align-items: center;"
     a.brand-logo.flex.no-wrap[href="/"]
       span#main-logo style="display: flex; align-items: center; height: 80px;"
-        = image_tag 'wildflower_logo_header.png', alt: 'Beautiful Wildflowers',
-                class: "responsive-img",
-                style: "height: 100%;",
-                id: "header-image"
+        = image_tag 'wildflower_logo_header.png', alt: 'Beautiful Wildflowers', class: "responsive-img", style: "height: 100%;", id: "header-image"
         span.hide-on-small-only
-          - if user_signed_in?
-            span.admin-font style="color: orange;"
-              i.fa-solid.fa-triangle-exclamation
-              | ADMIN MODE
-          - else
-            | &nbsp Wildflower Designs&nbsp;
-
+          | &nbsp Wildflower Designs&nbsp;
 
     a.sidenav-trigger[href="#" data-target="mobile-demo"]
       i.material-icons style="padding-top: 10px"
@@ -32,21 +23,18 @@ nav
         span style="display: flex; align-items: center; height: 100%"
           i.fa-solid.fa-circle-info.white-text
           a[href="/about_me"] About Me
+
       li.lumanosimo-font
         span style="display: flex; align-items: center; height: 100%"
           i.fa-solid.fa-address-card.white-text
           a[href="/contacts/new"] Contact
 
       - if user_signed_in?
-        li.lumanosimo-font
-          span style="display: flex; align-items: center; height: 100%"
-            i.fa-solid.fa-square-plus.orange-text
-            a.orange-text[href="/pages"] Messages
-
-        li.lumanosimo-font
-          span style="display: flex; align-items: center; height: 100%"
-            i.fa-solid.fa-square-plus.orange-text
-            a.orange-text[href="/products/new"] Add Product
+        - if current_user.admin?
+          li.lumanosimo-font
+            span style="display: flex; align-items: center; height: 100%"
+              i.fa-solid.fa-user-gear.orange-text
+              a.orange-text[href="/admin"] Admin
 
         li.lumanosimo-font
           span style="display: flex; align-items: center; height: 100%; padding-right: 10px;"
@@ -54,6 +42,11 @@ nav
             | &nbsp
             = button_to destroy_user_session_path, method: :delete, class: "logout-btn", style: "cursor: pointer; border-radius: 6px;" do
               | Logout
+      - else
+        li.lumanosimo-font
+          span style="display: flex; align-items: center; height: 100%"
+            i.fa-solid.fa-right-to-bracket.white-text
+            = link_to 'Sign In', new_user_session_path, class: 'white-text'
 
 ul.sidenav[id="mobile-demo"]
   li.lumanosimo-font
@@ -74,7 +67,7 @@ ul.sidenav[id="mobile-demo"]
       | &nbsp
       a[href="/contacts/new"] Contact
 
-  - if user_signed_in?
+  - if user_signed_in? && current_user.admin?
     .divider
     br
     span.ce style="color: orange; padding-left: 40px; font-size: 1.2rem"
@@ -85,22 +78,27 @@ ul.sidenav[id="mobile-demo"]
     br
     li.lumanosimo-font
       span style="padding-left: 20px; font-size: 2rem"
-        i.fa-solid.fa-square-plus.orange-text
+        i.fa-solid.fa-user-gear.orange-text
         | &nbsp
-        a.orange-text[href="/pages"] Messages
-    li.lumanosimo-font
-      span style="padding-left: 20px; font-size: 2rem"
-        i.fa-solid.fa-square-plus.orange-text
-        | &nbsp
-        a.orange-text[href="/products/new"] Product
+        a.orange-text[href="/admin"] Admin
     br
     br
+  - elsif user_signed_in?
     li.lumanosimo-font
       span style="display: flex; align-items: center; height: 100%; padding-left: 20px; font-size: 2rem"
         i.fa-solid.fa-right-from-bracket.white-text
         | &nbsp
         = button_to destroy_user_session_path, method: :delete, class: "logout-btn", style: "cursor: pointer; border-radius: 6px;" do
           | Logout
+    br
+  - else
+    li.lumanosimo-font
+      span style="padding-left: 20px;"
+        i.fa-solid.fa-right-to-bracket.white-text
+        | &nbsp
+        / a[href="/about_me"] About Me
+        = link_to  new_user_session_path do
+          | Sign In
 
 style
   |
@@ -112,9 +110,8 @@ style
     body > nav > div > ul > li > span > a {
      height:      80px;
      align-items: center;
-     display:     flex;
-     padding-left: 5px;
-    }
+     display:     flex
+
 
 javascript:
     $(document).ready(function () {

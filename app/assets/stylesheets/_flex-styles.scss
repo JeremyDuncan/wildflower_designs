@@ -15,6 +15,9 @@
   flex:   1 1 auto;
   margin: 5px;
 
+  &.whole{
+    flex-basis: calc(100% - 10px); // Assuming 5px margin
+  }
   &.half {
     flex-basis: calc(50% - 10px); // Assuming 5px margin
   }

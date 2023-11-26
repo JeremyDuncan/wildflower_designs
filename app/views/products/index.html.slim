@@ -9,8 +9,6 @@ h1.center-align.lobster-font  Products
               .div style="white-space: pre-wrap; color: #{page.text_color}; font-size: #{page.font_size}; text-align: #{page.alignment}"
                 | #{page.content}
 
-
-
   .flex-container
     - @products.each do |product|
       = link_to product,
@@ -18,7 +16,7 @@ h1.center-align.lobster-font  Products
               style: "display: flex; flex-direction: column; justify-content: space-between !important;" do
         = render product
   br
-  - if user_signed_in?
+  - if user_signed_in? && current_user.admin?
     .center-align
       = link_to new_product_path, class: 'btn waves-effect waves-light white-text' do
         i.fa-solid.fa-plus.orange-text style="font-size: 1rem;"

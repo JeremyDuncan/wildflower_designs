@@ -1,0 +1,40 @@
+h1.center-align
+  i.fa-solid.fa-user-gear
+  | &nbsp
+  | Admin Dashboard
+
+.flex-container style="display: flex; justify-content: center"
+  - if user_signed_in? && current_user.admin?
+    = link_to "/pages", class: "flex-item whole" do
+      .product-card
+        .center-flex.flex-row
+          i.fa-solid.fa-square-plus.white-text
+          | &nbsp
+          span.white-text Messages
+
+    = link_to "/products/new", class: "flex-item whole" do
+      .product-card
+        .center-flex.flex-row
+          i.fa-solid.fa-square-plus.white-text
+          | &nbsp
+          span.white-text Add Product
+
+
+    = button_to destroy_user_session_path,
+            method: :delete,
+            style: "cursor: pointer; border-radius: 6px;",
+            form_class: 'full-width-form',
+            class: 'product-card full-width logout-btn' do
+      .center-flex.flex-row
+        i.fa-solid.fa-right-from-bracket.white-text
+        | &nbsp
+        span.white-text Logout
+
+style
+  |
+    .full-width-form, .full-width {
+      display: flex;
+      justify-content: center;
+      width: 150px;
+      border: none;
+    }

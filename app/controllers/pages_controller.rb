@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
   before_action :set_page, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
+  before_action :check_admin
+
 
   # GET /pages or /pages.json
   def index
@@ -71,4 +73,10 @@ class PagesController < ApplicationController
       params.require(:page).permit(:title, :content, :alignment, :font_size, :text_color, :hidden)
     end
 
+
+  def check_admin
+    unless current_user.admin?
+      redirect_to root_path, alert: "You are not authorized to perform this action."
+    end
+  end
 end
