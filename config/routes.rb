@@ -22,6 +22,13 @@ Rails.application.routes.draw do
   resources :products
   resources :pages
 
+  resources :cart_items
+  post 'update_cart', to: 'cart_items#update_cart'
+
+  resources :cart_items do
+    post :request_invoice, on: :collection
+  end
+
   get 'home/index'
   root 'home#index'
 

@@ -14,27 +14,44 @@ nav
         | menu
 
     ul.right.hide-on-med-and-down style="display: flex; align-items: center"
-      li.lumanosimo-font
-        span style="display: flex; align-items: center; height: 100%"
-          i.fa-solid.fa-shirt.white-text
-          a.header-text[href="/products"] Products
+      a.header-text[href="/products"]
+        li.lumanosimo-font
+          span style="display: flex; align-items: center; height: 100%"
+            i.fa-solid.fa-shirt.white-text
+            | &nbsp
+            | Products
 
-      li.lumanosimo-font
-        span style="display: flex; align-items: center; height: 100%"
-          i.fa-solid.fa-circle-info.white-text
-          a.header-text[href="/about_me"] About Me
 
-      li.lumanosimo-font
-        span style="display: flex; align-items: center; height: 100%"
-          i.fa-solid.fa-address-card.white-text
-          a.header-text[href="/contacts/new"] Contact
+      a.header-text[href="/about_me"]
+        li.lumanosimo-font
+          span style="display: flex; align-items: center; height: 100%"
+            i.fa-solid.fa-circle-info.white-text
+            | &nbsp
+            | About Me
+
+      a.header-text[href="/contacts/new"]
+        li.lumanosimo-font
+          span style="display: flex; align-items: center; height: 100%"
+            i.fa-solid.fa-address-card.white-text
+            | &nbsp
+            | Contact
+
 
       - if user_signed_in?
         - if current_user.admin?
-          li.lumanosimo-font
-            span style="display: flex; align-items: center; height: 100%; padding-right: 10px;"
-              i.fa-solid.fa-user-gear.orange-text
-              a.orange-text.header-text[href="/admin"]Admin
+          a.orange-text.header-text[href="/admin"]
+            li.lumanosimo-font
+              span style="display: flex; align-items: center; height: 100%; padding-right: 10px;"
+                i.fa-solid.fa-user-gear.orange-text
+                | &nbsp
+                | Admin
+
+        - if user_signed_in? && current_user.cart_items.any?
+          a.cart[href="/cart_items"]
+            li.lumanosimo-font
+              span style="display: flex; align-items: center; height: 100%; padding-right: 10px;"
+                i.fa-solid.fa-cart-shopping
+                span.badge.cart.red #{current_user.cart_items.sum(:quantity)}
 
         li.lumanosimo-font
           span style="display: flex; align-items: center; height: 100%; padding-right: 10px;"
@@ -42,6 +59,7 @@ nav
             | &nbsp
             = button_to destroy_user_session_path, method: :delete, class: "logout-btn", style: "cursor: pointer; border-radius: 6px;" do
               | Logout
+
       - else
         li.lumanosimo-font
           span style="display: flex; align-items: center; height: 100%"
@@ -84,6 +102,14 @@ ul.sidenav[id="mobile-demo"]
     br
     br
   - elsif user_signed_in?
+    - if user_signed_in? && current_user.cart_items.any?
+      li.lumanosimo-font
+        span style="padding-left: 20px; font-size: 2rem"
+          i.fa-solid.fa-cart-shopping.white-text
+          a[href="/cart_items"]
+            span.badge.cart.red #{current_user.cart_items.sum(:quantity)}
+    br
+
     li.lumanosimo-font
       span style="display: flex; align-items: center; height: 100%; padding-left: 20px; font-size: 2rem"
         i.fa-solid.fa-right-from-bracket.white-text
@@ -110,8 +136,16 @@ style
     body > nav > div > ul > li > span > a {
      height:      80px;
      align-items: center;
-     display:     flex
-
+     display:     flex;
+    }
+    body > nav > div > ul > a {
+     height:      80px;
+     align-items: center;
+     display:     flex;
+    }
+    .cart {
+      padding-left: 0px;
+    }
 
 javascript:
     $(document).ready(function () {

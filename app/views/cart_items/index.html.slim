@@ -1,0 +1,110 @@
+h1.center-align.lobster-font Shopping Cart
+
+= form_with(url: update_cart_path, method: :post, local: true, id: 'cart-form') do |f|
+  .flex-container
+    - total_price = 0
+    - @cart_items.each do |item|
+      - product = item.product
+      - item_total_price = product.price * item.quantity
+      - total_price += item_total_price
+      .flex-item.quarter style="border-radius: 8px; margin: 10px; display: flex; flex-direction: column;"
+        .card style="border-radius: 8px; display: flex; flex-direction: column;  flex-wrap: nowrap"
+          span.card-title.center-align
+            strong #{product.name}
+
+          .flex-container style=" flex-wrap: nowrap"
+            - if product.images.any?
+              .card-image
+                = image_tag product.images.first.image.thumb_medium.url,
+                        class: 'responsive-img',
+                        style: "border-radius: 4px; height: 100px; width: 100px; padding: 6px;"
+            .card-content
+              / span.card-title #{product.name}
+              p.no-wrap  Price:    $#{product.price}
+              .input-field style="display: flex"
+                span style="display: flex; align-items: center"
+                  | Qty:
+                |&nbsp
+                = f.number_field "cart_items[#{item.id}][quantity]",
+                        value: item.quantity,
+                        min: 1,
+                        class: 'quantity-input',
+                        style: "padding: 0px; margin: 0px; width: 40px;"
+              p.no-wrap  Total:    $#{item_total_price}
+
+          .card-action style="display: flex; justify-content: space-between"
+            = link_to 'View', product_path(product), class: 'waves-effect waves-light btn'
+            = link_to 'Remove', cart_item_path(item),
+                    class: 'waves-effect waves-light btn red',
+                    data: { turbo: true, turbo_method: :delete }
+
+    - if @cart_items.any?
+      .flex-item.whole
+        .card-panel.wf-blue.bg-1.white-text
+          h5 Total Amount: $#{total_price}
+        .flex-container
+          = f.submit 'Update Cart', class: 'btn waves-effect waves-light'
+
+
+          / Hidden form for sending the invoice request
+          = form_with url: request_invoice_cart_items_path, method: :post, id: 'hidden-invoice-form', style: 'display: none;' do
+
+
+          = button_to 'Request Items', request_invoice_cart_items_path,
+                  method: :post,
+                  class: 'btn waves-effect waves-light',
+                  id: 'request-items-btn'
+
+#request-items-modal.modal style="display: none; height: 255px;"
+  .modal-content
+    h4 style="color: black; font-size: 1.8rem" Email Request Sent
+    p Your request has been sent to Wildflower Designs. They will contact you shortly.
+    .modal-actions style="display: flex; flex-direction: column; justify-content: center"
+      button.btn.waves-effect.waves-light.modal-close Confirm
+
+style
+  |
+    .no-wrap {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .inline-field {
+      display: flex;
+      align-items: center;
+    }
+
+javascript:
+    $(document).ready(function () {
+        let isFormReadyForSubmission = false;
+
+        $('.quantity-input').on('change', function () {
+            updateTotal();
+        });
+
+        function updateTotal() {
+            let total = 0;
+            $('.quantity-input').each(function () {
+                const price = parseFloat($(this).data('price'));
+                const quantity = parseInt($(this).val());
+                total += price * quantity;
+            });
+            $('#total-amount').text('$' + total.toFixed(2));
+        }
+
+        $('#request-items-btn').on('click', function (e) {
+            if (!isFormReadyForSubmission) {
+                console.log("FIRST")
+                e.preventDefault();
+                $('#request-items-modal').show();
+                isFormReadyForSubmission = true;
+            } else {
+                $('#request-items-btn').click();            }
+        });
+
+        // Close modal and submit form
+        $('.modal-close').on('click', function (e) {
+            $('#request-items-modal').hide();
+            $('#request-items-btn').click();
+        });
+    });
