@@ -99,7 +99,8 @@ javascript:
                 $('#request-items-modal').show();
                 isFormReadyForSubmission = true;
             } else {
-                $('#request-items-btn').click();            }
+                $('#hidden-invoice-form').submit();
+            }
         });
 
         // Close modal and submit form
@@ -107,4 +108,6 @@ javascript:
             $('#request-items-modal').hide();
             $('#request-items-btn').click();
         });
+
+
     });
