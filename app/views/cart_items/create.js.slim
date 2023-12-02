@@ -1,0 +1,8 @@
+// app/views/cart_items/create.js.erb
+- if @cart_item.persisted?
+  alert('Product added to cart!');
+
+// Additional JavaScript to update the page
+- else
+  alert('Unable to add product to cart.');
+

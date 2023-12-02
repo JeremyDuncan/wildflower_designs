@@ -1,0 +1,42 @@
+doctype html
+html
+  head
+    style
+      | body { font-family: Arial, sans-serif; }
+      | .container { width: 100%; max-width: 600px; margin: 0 auto; padding: 20px; }
+      | .header { background-color: #009688; color: white; padding: 10px; text-align: center; }
+      | .content { background-color: #f2f2f2; padding: 20px; }
+      | .footer { background-color: #eee; color: #333; text-align: center; padding: 10px; }
+      | table { width: 100%; border-collapse: collapse; }
+      | th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+      | th { background-color: #f2f2f2; }
+  body
+    .container
+      .header
+        h1 Invoice from Wildflower Designs
+
+      .content
+        p Hello,
+        p Thank you for your interest in our products. Here is your invoice:
+
+        table
+          thead
+            tr
+              th Item
+              th Price
+              th Quantity
+              th Total
+          tbody
+            - @cart_items.each do |item|
+              tr
+                td = item.product.name
+                td = "$#{item.product.price}"
+                td = item.quantity
+                td = "$#{item.product.price * item.quantity}"
+            tr
+              td colspan="3" style="text-align: right;" Grand Total:
+              td = "$#{@cart_items.sum { |item| item.product.price * item.quantity }}"
+
+      .footer
+        p © #{Time.now.year} Wildflower Designs
+

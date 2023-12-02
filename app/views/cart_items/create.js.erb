@@ -1,0 +1,7 @@
+<% if @cart_item.persisted? %>
+// JavaScript to update the UI, like showing a success message
+alert('Product added to cart!');
+<% else %>
+// JavaScript to handle failure, like showing an error message
+alert('Unable to add product to cart.');
+<% end %>

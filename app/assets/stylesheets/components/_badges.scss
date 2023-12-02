@@ -26,6 +26,17 @@ span.badge {
     content: " new";
   }
 
+  &.cart {
+    font-weight: 300;
+    font-size: 0.8rem;
+    color: #fff;
+    background-color: $badge-bg-color;
+    border-radius: 2px;
+  }
+  &.cart:after {
+    content: " In Cart";
+  }
+
   &[data-badge-caption]::after {
     content: " " attr(data-badge-caption);
   }
