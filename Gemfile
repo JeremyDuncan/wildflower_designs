@@ -49,6 +49,7 @@ gem 'fog-aws'
 gem 'mini_magick'
 gem 'devise'
 
+gem 'carmen'
 
 # Use Sass to process CSS
 # gem "sassc-rails"

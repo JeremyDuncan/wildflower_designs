@@ -29,6 +29,8 @@ Rails.application.routes.draw do
     post :request_invoice, on: :collection
   end
 
+  post 'add_address', to: 'users#add_address'
+
   get 'home/index'
   root 'home#index'
 
