@@ -54,11 +54,29 @@ h1.center-align.lobster-font Shopping Cart
                   method: :post,
                   class: 'btn waves-effect waves-light',
                   id: 'request-items-btn'
-
-#request-items-modal.modal style="display: none; height: 255px;"
+#address-form-modal.modal style="display: none; height: 60vh"
   .modal-content
-    h4 style="color: black; font-size: 1.8rem" Email Request Sent
-    p Your request has been sent to Wildflower Designs. They will contact you shortly.
+    h4 Enter Shipping Address
+    = form_with url: add_address_path, method: :post, remote: true, id: 'address-form' do |f|
+      .input-field
+        = f.label :street_name
+        = f.text_field :street_name
+      .input-field
+        = f.label :city
+        = f.text_field :city
+      .input-field
+        = f.collection_select :state, state_options('United States'), :last, :first, {include_blank: 'State'}, {class: "browser-default"}
+      .input-field
+        = f.label :zip_code
+        = f.text_field :zip_code
+      button.btn.waves-effect.waves-light type="submit" Submit Address
+
+#request-items-modal.modal style="display: none; height: 355px;"
+  .modal-content
+    h4 style="color: black; font-size: 1.8rem" Send Request?
+    P You will be sent a preliminary invoice without shipping costs.
+    p Wildflower Designs will contact you shortly about your request with shipping costs included.
+
     .modal-actions style="display: flex; flex-direction: column; justify-content: center"
       button.btn.waves-effect.waves-light.modal-close Confirm
 
@@ -73,10 +91,14 @@ style
       display: flex;
       align-items: center;
     }
+    #address-form-modal .input-field label {
+      color: white;
+    }
 
 javascript:
     $(document).ready(function () {
         let isFormReadyForSubmission = false;
+        $('select').formSelect();
 
         $('.quantity-input').on('change', function () {
             updateTotal();
@@ -96,18 +118,29 @@ javascript:
             if (!isFormReadyForSubmission) {
                 console.log("FIRST")
                 e.preventDefault();
-                $('#request-items-modal').show();
+                // $('#request-items-modal').show();
+                $('#address-form-modal').show(); // Show address form modal
+
                 isFormReadyForSubmission = true;
             } else {
                 $('#hidden-invoice-form').submit();
             }
         });
 
-        // Close modal and submit form
-        $('.modal-close').on('click', function (e) {
+        $('#address-form').on('submit', function (event) {
+            // On successful address form submission, show the confirmation modal
+            console.log("Address form submitted successfully.");
+
+            $('#address-form-modal').hide();
+            $('#request-items-modal').show();
+            // isFormReadyForSubmission = true;
+        })
+
+        $('.modal-close').on('click', function () {
+            // Close the modal and reset form submission flag
             $('#request-items-modal').hide();
             $('#request-items-btn').click();
+            isFormReadyForSubmission = false;
         });
-
-
     });
+

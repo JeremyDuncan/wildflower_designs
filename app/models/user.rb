@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   # validate      :email_allowed
   before_create :set_admin_status
+  validates :first_name, :last_name, :phone_number, presence: true
 
 
 

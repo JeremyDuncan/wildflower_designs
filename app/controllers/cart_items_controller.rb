@@ -54,7 +54,7 @@ class CartItemsController < ApplicationController
     @cart_items = current_user.cart_items
     if @cart_items.any?
       UserMailer.invoice_email(current_user, @cart_items).deliver_now
-
+      UserMailer.invoice_email_request_to_company(current_user, @cart_items).deliver_now
       # Clear the cart after sending the invoice
       current_user.cart_items.destroy_all
 

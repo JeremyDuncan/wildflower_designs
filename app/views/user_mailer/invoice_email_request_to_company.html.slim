@@ -13,12 +13,9 @@ html
   body
     .container
       .header
-        h1 Invoice from Wildflower Designs
+        h1 Customer Request
 
       .content
-        p Hello,
-        p Thank you for your interest in our products. Here is your invoice:
-
         h3 Request Date:  #{Time.now.strftime("%d %B %Y")}
         p Customer Name:  #{@user.first_name} #{@user.last_name}
         p Customer Email: #{@user.email}
