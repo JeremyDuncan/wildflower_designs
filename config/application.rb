@@ -10,6 +10,7 @@ module WildflowerDesigns
   class Application < Rails::Application
     Rails.application.config.hosts << "wild-flower-designs.com"
     Rails.application.config.hosts << "www.wild-flower-designs.com"
+    config.hosts << "localhost:3000"
     config.autoload_paths << Rails.root.join('lib')
 
     # Initialize configuration defaults for originally generated Rails version.
