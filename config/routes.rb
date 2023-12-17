@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   # get 'contacts/create'
   resources :contacts, only: [:new, :create]
 
+  resources :products
   resources :products do
     resources :images, only: [:new, :create]
   end
@@ -19,19 +20,19 @@ Rails.application.routes.draw do
   get 'contact', to: 'static_pages#contact'
 
   resources :images
-  resources :products
   resources :pages
 
-  resources :cart_items
-  post 'update_cart', to: 'cart_items#update_cart'
 
+  post 'update_cart', to: 'cart_items#update_cart'
+  resources :cart_items
   resources :cart_items do
     post :request_invoice, on: :collection
   end
 
+  resources :users
   post 'add_address', to: 'users#add_address'
 
-  get 'home/index'
+  get  'home/index'
   root 'home#index'
 
   namespace :admin do

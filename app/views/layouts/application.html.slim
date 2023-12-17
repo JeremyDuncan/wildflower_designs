@@ -24,6 +24,24 @@ html
     meta name="viewport" content="width=device-width,initial-scale=1"
     == csrf_meta_tags
     == csp_meta_tag
+
+
+    / Open Graph Tags
+    meta property="og:type" content="website"
+    meta property="og:title" content="Wildflower Designs"
+    meta property="og:description" content="Beautiful designs for everyone!"
+    meta property="og:url" content="https://www.wild-flower-designs.com"
+    meta property="og:image" content=image_url('wildflower_logo_header.png')
+
+
+    / Favicon and touch icons
+    link rel="apple-touch-icon" sizes="180x180" href=asset_path('apple-touch-icon.png')
+    link rel="icon" type="image/png" sizes="32x32" href=asset_path('favicon-32x32.png')
+    link rel="icon" type="image/png" sizes="16x16" href=asset_path('favicon-16x16.png')
+    link rel="manifest" href=asset_path('site.webmanifest')
+    meta name="theme-color" content="#ffffff"
+
+
     == stylesheet_link_tag "application", "data-turbo-track" => "reload"
     == javascript_include_tag
     == javascript_importmap_tags

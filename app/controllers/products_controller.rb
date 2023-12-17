@@ -31,40 +31,16 @@ class ProductsController < ApplicationController
   end
 
 
-  # POST /products or /products.json
-  # def create
-  #   @product = Product.new(product_params)
-  #
-  #   respond_to do |format|
-  #     if @product.save
-  #       format.html { redirect_to product_url(@product), notice: "Product was successfully created." }
-  #       format.json { render :show, status: :created, location: @product }
-  #     else
-  #       format.html { render :new, status: :unprocessable_entity }
-  #       format.json { render json: @product.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
   def create
-    # @product = Product.new(product_params.except(:images))
     @product = Product.new(product_params.except(:images_attributes))
 
     respond_to do |format|
-      # if @product.save
-      #   # Handle image uploads
-      #   if params[:product][:images]
-      #     params[:product][:images].each do |image|
-      #       @product.images.create(image: image)  # Assumes you have an 'image' column in your Image model
-      #     end
-      #   end
-
-        if @product.save
-          if params[:product][:images_attributes]
-            params[:product][:images_attributes].values.each do |image_attr|
-              @product.images.create(image: image_attr[:image], caption: image_attr[:caption])
-            end
+      if @product.save
+        if params[:product][:images_attributes]
+          params[:product][:images_attributes].values.each do |image_attr|
+            @product.images.create(image: image_attr[:image], caption: image_attr[:caption])
           end
+        end
 
         format.html { redirect_to product_url(@product), notice: "Product was successfully created." }
         format.json { render :show, status: :created, location: @product }
@@ -80,9 +56,6 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        debug(params, "UPDATE => PARAMS")
-        debug(@product, "UPDATE => @product")
-
         format.html { redirect_to product_url(@product), notice: "Product was successfully updated." }
         format.json { render :show, status: :ok, location: @product }
       else

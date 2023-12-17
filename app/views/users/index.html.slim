@@ -1,0 +1,28 @@
+h1.center-align.lobster-font Customers
+
+table.striped.responsive-table.wf-blue.bg-2
+  thead
+    tr
+      th.white-text First Name
+      th.white-text Last Name
+      th.white-text Phone Number
+      th.white-text Email
+      th.white-text Address
+      th.white-text City
+      th.white-text State
+      th.white-text Zip Code
+
+  // Add more table headers as needed
+
+  tbody
+    - @users.each do |user|
+      tr
+        td = user.first_name
+        td = user.last_name
+        td = user.phone_number
+        td = user.email
+        td = user.street_name
+        td = user.city
+        td = user.state
+        td = user.zip_code
+          // Add more table data cells as needed

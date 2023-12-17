@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
   include ConsoleColors
+
+  def index
+    @users = User.all
+  end
 
   def add_address
     debug(params, "PARAMS")
