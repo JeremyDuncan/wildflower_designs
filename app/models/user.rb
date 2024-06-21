@@ -6,7 +6,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  # validate      :email_allowed
+  validate      :email_allowed
   before_create :set_admin_status
   validates :first_name, :last_name, :phone_number, presence: true
 
