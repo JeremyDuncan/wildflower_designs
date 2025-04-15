@@ -1,7 +1,6 @@
 # ===================================================================
 # This Docker Compose file is configured for a development environment
 # -------------------------------------------------------------------
-version: '3'
 services:
   db:
     image: postgres:13

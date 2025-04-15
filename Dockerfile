@@ -6,7 +6,7 @@ FROM ruby:3.2.2
 # ==============================================================================
 # Set environment variables
 # ------------------------------------------------------------------------------
-ENV RAILS_ROOT /share/Public/Web-Hosting/wildflower_designs
+ENV RAILS_ROOT /wildflower_designs
 
 # ==============================================================================
 # Create and set the working directory
@@ -31,6 +31,17 @@ RUN bundle install --without development test
 # ------------------------------------------------------------------------------
 COPY . .
 
+
+ARG DB_NAME
+ARG DB_USERNAME
+ARG DB_PASSWORD
+ARG DB_HOST
+
+ENV DB_NAME=$DB_NAME
+ENV DB_USERNAME=$DB_USERNAME
+ENV DB_PASSWORD=$DB_PASSWORD
+ENV DB_HOST=$DB_HOST
+
 # ==============================================================================
 # Precompile assets
 # ------------------------------------------------------------------------------
@@ -39,7 +50,7 @@ RUN bundle exec rails assets:precompile
 # ==============================================================================
 # Expose port 8538 to the Docker host
 # ------------------------------------------------------------------------------
-EXPOSE 8538
+EXPOSE 3000
 
 # ==============================================================================
 # The default command that gets run will start the Puma server
