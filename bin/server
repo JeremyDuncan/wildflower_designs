@@ -1,0 +1,12 @@
+#!/bin/bash
+# ==============================================================================
+# This script ensures the database is prepared before starting the Rails server
+# so that db:create, db:migrate, and db:seed (if needed) are done automatically.
+# ------------------------------------------------------------------------------
+set -e
+
+echo "Preparing database..."
+bundle exec rails db:prepare
+
+echo "Starting Puma..."
+bundle exec puma -C config/puma.rb

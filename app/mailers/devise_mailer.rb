@@ -1,5 +1,5 @@
 class DeviseMailer < Devise::Mailer
-  default from: 'jeremy.duncan1984@gmail.com'
+  default from: ENV.fetch("EMAIL_USERNAME", "your_default_email")
 
   # Reset password instructions
   def reset_password_instructions(record, token, opts={})
